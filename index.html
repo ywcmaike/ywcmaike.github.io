@@ -352,12 +352,12 @@ Moreover, we propose the oriented chamfer loss to mitigate the mesh self-interse
     <div class="wide">
       <!-- <a class="paper" onclick="_gaq.push(['_trackEvent', 'Pub', 'Download', 'MM2020']);" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Yu_Single-Image_Piece-Wise_Planar_3D_Reconstruction_via_Associative_Embedding_CVPR_2019_paper.pdf"> -->
       <a>
-        SuperPlane: 3D Plane Detection and Descriptor from a Single Image
+        SuperPlane: 3D Plane Detection and Description from a Single Image
       </a><br />
       <strong>Weicai Ye</strong>, Guofeng Zhang<br />
-      Extra experiments have been conducted and the paper is writing now. <br />
+      It has been summited to VR2021. <br />
       <span>
-        Human-made environments usually contain many planar structures, which are often weak or repeating textures. This makes it difficult for feature-based methods to extract robust features or tend to cause mismatches. To tackle this problem, this paper proposes a new task–detecting 3D planes and descriptor generation from a single image. We propose a novel baseline named SuperPlane that contains a mask attention module to capture the plane feature. We also create plane descriptor benchmarks to verify the effectiveness of our baseline. In addition, we consider planes as feature points and apply them to pose estimation tasks. Extensive experiments demonstrate that the proposed method achieves comparable results in a general environment, and outperform in weak or repeat-texture scenes than the feature point-based methods. With the descriptor, the plane segmentation and depth estimation have been significantly improved. We highlight that the mid-level feature can be applied to the Visual Localization tasks.
+        We present a novel end-to-end plane detection and description network named SuperPlane to tackle the challenging conditions in matching problems. Our network takes a single image as input and extracts 3D planes and generates corresponding descriptors simultaneously. We also propose a mask-attention module and an instance-triplet loss to improve the distinctiveness of the plane descriptor. The detected plane descriptors are treated as discrete distributions and an Area-Aware Kullback-Leibler (KL) Divergence Retrieval method is proposed for the Image-Based Localization (IBL) task. Extensive experiments show that our method outperforms state-of-the-art methods and retains good generalization capacity. An AR application is presented to demonstrate the effectiveness of the proposed method.
       </span>
       <!-- <a href="http://cvpr2019.thecvf.com/" target="_blank">CVPR 2019</a> /
       <a onclick="_gaq.push(['_trackEvent', 'Supp', 'Download', 'YuZLZG19']);" href="http://openaccess.thecvf.com/content_CVPR_2019/supplemental/Yu_Single-Image_Piece-Wise_Planar_CVPR_2019_supplemental.pdf" target="_blank">supp</a> /
