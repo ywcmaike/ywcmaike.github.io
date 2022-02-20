@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Yifan Wang - ETH Zurich</title>
+    <link>https://yifita.github.io/publication_types/1/</link>
+      <atom:link href="https://yifita.github.io/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 10 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://yifita.github.io/img/icon-192.png</url>
+      <title>1</title>
+      <link>https://yifita.github.io/publication_types/1/</link>
+    </image>
+    
+    <item>
+      <title>Iso-Points: Optimizing Neural Implicit Surfaces with Hybrid Representations</title>
+      <link>https://yifita.github.io/publication/iso_points/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/iso_points/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/3myC2_BIGcI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;teaser.png&#34; alt=&#34;teaser&#34; /&gt;
+We propose a hybrid neural surface representation with implicit
+functions and iso-points. The representation leads to accurate and robust
+surface reconstruction from imperfect data. The on-the-fly conversion with
+efficient iso-points extraction allows us to augment existing optimization
+pipelines in a variety of ways. In the first row, geometry-aware regularizers
+are incorporated to reconstruct a surface from a noisy point cloud; in the
+second row, geometric details are preserved in multi-view reconstruction
+via feature-aware sampling; in the last row, iso-points serve as a 3D prior
+to improve the topological accuracy of the reconstructed surface&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;overview.png&#34; alt=&#34;overview&#34; /&gt;
+We efficiently extract a dense, uniformly distributed set of iso-points as an explicit representation for a neural implicit surface. Since the extraction is fast, iso-points can be integrated back into the optimization as a 3D geometric prior, enhancing the optimization.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Neural Cages for Detail-Preserving 3D Deformations</title>
+      <link>https://yifita.github.io/publication/deep_cage/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/deep_cage/</guid>
+      <description>
+
+&lt;h3 id=&#34;we-can-warp-an-arbitrary-input-shape-to-match-the-grob-structure-of-an-arbitrary-target-shape-while-preserving-all-the-local-geometric-details-the-input-and-target-shape-is-not-required-to-have-dense-correspondences-the-same-topology-or-even-the-same-representation-form-e-g-points-mesh-and-2d-image&#34;&gt;We can warp an arbitrary input shape to match the grob structure of an arbitrary target shape, while &lt;strong&gt;preserving all the local geometric details&lt;/strong&gt;. The input and target shape is not required to have dense correspondences, the same topology, or even the same representation form (e.g. points, mesh and 2D image).&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;overview.png&#34; alt=&#34;overview&#34; /&gt;
+The key of our method is reducing the degrees of freedom of the deformation space by extending the traditional cage-based deformation technique.&lt;/p&gt;
+
+&lt;h2 id=&#34;application-1-shape-synthesis&#34;&gt;Application 1 - Shape synthesis&lt;/h2&gt;
+
+&lt;p&gt;We use our method to
+learn a meaningful deformation space over a collection of
+shapes within the same category, and then use random pairs
+of source and target shapes to synthesize plausible variations
+of artist-generated assets.
+&lt;img src=&#34;comparison.png&#34; alt=&#34;comparison&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;application-2-deformation-transfer&#34;&gt;Application 2 - Deformation transfer&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;deformation_transfer.jpg&#34; alt=&#34;dt&#34; /&gt;
+We first learn the cage deformation space
+for a template source shape (top left) with known pose and body shape
+variations. Then, we annotate predefined landmarks on new characters
+in neutral poses (left column, rows 2-4). At test time, given novel target
+poses (top row, green) without known correspondences to the template, we
+transfer their poses to the other characters (blue).&lt;/p&gt;
+
+&lt;p&gt;Due to the agnostic nature of cage-deformations to
+the underlying shape, we are able to seamlessly combine
+machine learning and traditional geometry processing to
+generalize to never-observed characters, even if the novel source and target characters are morphologically very different from the both the template source.&lt;/p&gt;
+
+&lt;h2 id=&#34;talk&#34;&gt;Talk&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/UZLAj2xTojY&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Patch-base progressive 3D Point Set Upsampling</title>
+      <link>https://yifita.github.io/publication/3pu/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/3pu/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;teaser.png&#34; alt=&#34;teaser&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
+
+&lt;p&gt;&lt;center&gt;
+$16\times$ upsampling from 625 points
+&lt;/center&gt;
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;figure_sparse.png&#34; &gt;
+
+&lt;img src=&#34;figure_sparse.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;center&gt;$16\times$ upsampling from 5000 points&lt;/center&gt;
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;figure_dense.png&#34; &gt;
+
+&lt;img src=&#34;figure_dense.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;center&gt;$16\times$ upsampling from scan data&lt;/center&gt;
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;real_scan.png&#34; &gt;
+
+&lt;img src=&#34;real_scan.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;center&gt;$16\times$ upsampling from virtual scan data&lt;/center&gt;
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;scan.png&#34; &gt;
+
+&lt;img src=&#34;scan.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;PU-Net&lt;/em&gt;: L. Yu, X. Li, C.-W. Fu, D. Cohen-Or, and P.-A. Heng, &amp;ldquo;Pu-net: Point cloud upsampling network&amp;rdquo;, CVPR 2018&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;EC-Net&lt;/em&gt;: L. Yu, X. Li, C.-W. Fu, D. Cohen-Or, and P.-A. Heng, &amp;ldquo;Ec-net: an edge-aware point set consolidation network&amp;rdquo;,  ECCV 2018&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;EAR&lt;/em&gt;: H. Huang, S. Wu, M. Gong, D. Cohen-Or, U. Ascher, and H. Zhang, &amp;ldquo;Edge-aware point set resampling&amp;rdquo;, ACM ToG 2013&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;WLOP&lt;/em&gt;: H. Huang, D. Li, H. Zhang, U. Ascher, and D. Cohen-Or, &amp;ldquo;Consolidation of unorganized point clouds for surface reconstruction&amp;rdquo;, SIGGRAPH Asia 2009&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Fully Progressive Approach to Single-Image Super-Resolution</title>
+      <link>https://yifita.github.io/publication/prosr/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/prosr/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;teaser.png&#34; alt=&#34;teaser&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;prosr_benchmark.png&#34; alt=&#34;benchmark&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;MsLapSRN: Lai, Wei-Sheng, et al. &amp;ldquo;Fast and Accurate Image Super-Resolution with Deep Laplacian Pyramid Networks.&amp;rdquo; arXiv preprint arXiv:1710.01992 (2017).&lt;/p&gt;
+
+&lt;p&gt;EDSR, MDSR: Lim, Bee, et al. &amp;ldquo;Enhanced deep residual networks for single image super-resolution.&amp;rdquo; The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops. Vol. 1. No. 2. 2017.&lt;/p&gt;
+
+&lt;p&gt;RDN:Zhang, Yulun, et al. &amp;ldquo;Residual Dense Network for Image Super-Resolution.&amp;rdquo;  The IEEE Conference on Computer Vision and Pattern Recognition (CVPR). 2018.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- ### Accompanying Video ###
+(Best viewed in full-screen mode)
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/ON3XHnaDepE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+ --&gt;
+
+&lt;h3 id=&#34;featured-video&#34;&gt;Featured Video&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s a pleasure to be featured in &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg&#34; target=&#34;_blank&#34;&gt;2 minute paper&lt;/a&gt;&amp;rdquo;, an amazing YouTube channel that introduces latest development of AI in a variety of applications.
+Here&amp;rsquo;s the video that talks about our work.
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/HvH0b9K_Iro&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Two-Stream SR-CNNs for Action Recognition in Videos</title>
+      <link>https://yifita.github.io/publication/action_srcnn/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/action_srcnn/</guid>
+      <description>
+
+&lt;h3 id=&#34;network-architecture&#34;&gt;Network Architecture&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;featured.jpg&#34; alt=&#34;Architecture&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

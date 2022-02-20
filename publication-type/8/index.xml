@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>8 | Yifan Wang - ETH Zurich</title>
+    <link>https://yifita.github.io/publication-type/8/</link>
+      <atom:link href="https://yifita.github.io/publication-type/8/index.xml" rel="self" type="application/rss+xml" />
+    <description>8</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://yifita.github.io/media/icon_hu039e7a8dee100027504ac14a50a2ed32_26438_512x512_fill_lanczos_center_3.png</url>
+      <title>8</title>
+      <link>https://yifita.github.io/publication-type/8/</link>
+    </image>
+    
+    <item>
+      <title>Video Super-Resolution Using An Artificial Neural Network</title>
+      <link>https://yifita.github.io/publication/pro_sr_patent/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/pro_sr_patent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Techniques for performing point-based inverse rendering</title>
+      <link>https://yifita.github.io/publication/dss_patent/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/dss_patent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Techniques for upscaling images generated with undetermined downscaling kernels</title>
+      <link>https://yifita.github.io/publication/blindsr_patent/</link>
+      <pubDate>Thu, 18 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/blindsr_patent/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yifan Wang - ETH Zurich</title>
+    <link>https://yifita.github.io/</link>
+      <atom:link href="https://yifita.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>Yifan Wang - ETH Zurich</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://yifita.github.io/media/icon_hu039e7a8dee100027504ac14a50a2ed32_26438_512x512_fill_lanczos_center_3.png</url>
+      <title>Yifan Wang - ETH Zurich</title>
+      <link>https://yifita.github.io/</link>
+    </image>
+    
+    <item>
+      <title>Geometry-Consistent Neural Shape Representation with Implicit Displacement Fields</title>
+      <link>https://yifita.github.io/publication/idf/</link>
+      <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/idf/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#overview-video&#34;&gt;Overview video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#method&#34;&gt;Method&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#implicit-displacement-fields&#34;&gt;Implicit Displacement Fields&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#networks&#34;&gt;Networks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#transferability&#34;&gt;Transferability&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#results&#34;&gt;Results&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#future-work&#34;&gt;Future work&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;overview-video&#34;&gt;Overview video&lt;/h2&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/fl4Rje8HM3I&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;How to best represent 3D geometry in neural networks?
+Objects we encounter in real life distinguish themselves with their intricate geometric details.
+Is there a compact way to capture these intricacies and allow efficient downstream tasks?&lt;/p&gt;
+&lt;p&gt;Implicit neural networks, also known as coordinate-based networks, has gained a lot of attraction due to their theoretically infinite resolution.
+But in reality, due to the &lt;a href=&#34;https://arxiv.org/abs/1806.08734&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;spectral bias&lt;/a&gt; of neural nets, high-frequency signals (surface details) still get lost.&lt;/p&gt;
+&lt;p&gt;The research community combat this issue focusing two aspects: spatial partition and frequency transform.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Spatial Partition&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Frequency Transform&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Divides the holistic implicit function into many simpler ones located in cells of some spatial structures&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Transforms the signal passing through the network to a high-frequency via either periodic activation functions or Fourier Transformation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DLS&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, NGLOD&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SIREN&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;, Position Encoding&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Incompact, memory demands grows cubically with the spatial resolution, may have issues at the cell boundary&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Hard to train, local minima&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;
+&lt;h3 id=&#34;implicit-displacement-fields&#34;&gt;Implicit Displacement Fields&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;overview&#34; srcset=&#34;
+               /publication/idf/overview_hu603fcdbc0f862d5f93648a4d86a17b38_159774_ff949b5de5888780dc08e9c5d4d1d7eb.jpg 400w,
+               /publication/idf/overview_hu603fcdbc0f862d5f93648a4d86a17b38_159774_c74dec11c075e394ffebae6cdec9f8da.jpg 760w,
+               /publication/idf/overview_hu603fcdbc0f862d5f93648a4d86a17b38_159774_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/overview_hu603fcdbc0f862d5f93648a4d86a17b38_159774_ff949b5de5888780dc08e9c5d4d1d7eb.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;183&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+We decompose the 3D geometry into a smooth base surface, represented as a low-frequency signed distance function, and a continuous high-frequency &lt;strong&gt;implicit displacement field&lt;/strong&gt;, which offsets the base iso-surface along the normal direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 Frequency-based partition of the 3D geometry &amp;ndash; decompose the shape into a smooth base surface, represented as a low-frequency signed distance function, and a continuous high-frequency &lt;strong&gt;implicit displacement field&lt;/strong&gt;, which offsets the base iso-surface along the normal direction.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Our idea took inspiration from &lt;a href=&#34;https://en.wikipedia.org/wiki/Displacement_mapping&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Displacement Mapping&lt;/a&gt;, a classic technique in Computer Graphics to model surface details.
+In this image below, the bumps on the sphere is added by offsetting samples of the sphere along the normal directions by a distance obtained (with interpolation) from the height map on the top-left.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-source-httpswwwyankodesigncomimagesdesign_news201904how-to-create-realistic-textures-with-displacement-maps-in-keyshot-8&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://www.yankodesign.com/images/design_news/2019/04/how-to-create-realistic-textures-with-displacement-maps-in-keyshot-8/keyshot_displacement_maps_3.jpg&#34; alt=&#34;source: https://www.yankodesign.com/images/design_news/2019/04/how-to-create-realistic-textures-with-displacement-maps-in-keyshot-8&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      source: &lt;a href=&#34;https://www.yankodesign.com/images/design_news/2019/04/how-to-create-realistic-textures-with-displacement-maps-in-keyshot-8&#34;&gt;https://www.yankodesign.com/images/design_news/2019/04/how-to-create-realistic-textures-with-displacement-maps-in-keyshot-8&lt;/a&gt;
+    &lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Displacement mapping is discrete and defined on the surface.
+So in this paper, we are tasked to extend the definition of displacement mapping to the continous $\mathbb{R}^3$ domain.
+This is illustratively shown in the figure below (please check our paper for the formal definition and proofs).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Implicit displacement field $d: \mathbb{R}^3 \rightarrow \mathbb{R}$ maps two equi-isosurfaces $\mathcal{S}_{\tau}$ and $\hat{\mathcal{S}}_{\tau}$; height map in the classic displacement mapping is a special case $\tau_{0}$.&lt;/p&gt;
+&lt;p&gt;Equi-isosurface mapping: $f\left(\mathbf{x}\right) = \hat{f}\left(\mathbf{x}+d\mathbf{n}\right)$ and $\hat{f}\left(\hat{\mathbf{x}}\right) = f\left(\hat{\mathbf{x}}+\hat{d}\mathbf{n}\right)$.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-implicit-displacement-field-in-1d&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Implicit displacement field in 1D.&#34; srcset=&#34;
+               /publication/idf/1D-overview_hu54d91a2bab3bb3210b563591de8feb7d_132131_674a2c364e0950aab4dd60742ca09e50.jpg 400w,
+               /publication/idf/1D-overview_hu54d91a2bab3bb3210b563591de8feb7d_132131_e6d97defbbdf6beae4583925c32f2e9a.jpg 760w,
+               /publication/idf/1D-overview_hu54d91a2bab3bb3210b563591de8feb7d_132131_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/1D-overview_hu54d91a2bab3bb3210b563591de8feb7d_132131_674a2c364e0950aab4dd60742ca09e50.jpg&#34;
+               width=&#34;480px&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Implicit displacement field in 1D.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;networks&#34;&gt;Networks&lt;/h3&gt;
+&lt;p&gt;How do we separate the low-frequency base SDF and high-frequency implicit displacement field?
+We notice that this is at its core a &lt;em&gt;frequency decomposition&lt;/em&gt; of the geometry.
+At the same time, we observe that the output signal&amp;rsquo;s frequency of SIRENs (networks with period activation functions) can be controlled easily with their frequency paramter $\omega$ in the sine activation $x\mapsto\sin\left(\omega x\right)$.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 We separate the low-frequency base and high-frequency detail in an unsupervised manner by leveraging SIREN&amp;rsquo;s inherent frequency capacity, which can be modulated conveniently by the hyper-parameter $\omega$ in the sine activation $x\mapsto\sin\left(\omega x\right)$.
+In other words, we approximate base SDF with a low-frequency SIREN (e.g. $\omega=15$) and the displacement field with a high-frequency SIREN (e.g. $\omega=60$ ).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s denote the base SDF network as $\mathcal{N}^{\omega_B}$ and the displacement network as $\mathcal{N}^{\omega_D}$.
+The detailed SDF (the one we want to approximate) is composed the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;compute the normal direction $\mathbf{n} = \frac{\nabla \mathcal{N}^{\omega_B}\left(\mathbf{x}\right)}{\lVert\nabla \mathcal{N}^{\omega_B}\left(\mathbf{x}\right)\rVert}$,&lt;/li&gt;
+&lt;li&gt;compute the displacement distance $\hat{d} = \mathcal{N}^{\omega_D}\left(\mathbf{x}\right)$,&lt;/li&gt;
+&lt;li&gt;compute the SDF at the displaced position $f(\mathbf{x}+\hat{d}\mathbf{n}) = \mathcal{N}^{\omega_B}\left(\mathbf{x}+\hat{d}\mathbf{n}\right)$, which per our definition is equal to the detail SDF $\hat{f}(\mathbf{x})$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notice that since both $\mathcal{N}^{\omega_B}$ and $\mathcal{N}^{\omega_D}$ are included in the steps, we can train them together by either directly comparing $\hat{f}(\mathbf{x})$ with the ground truth SDF or indirectly by solving eikonal constraints with boundary conditions.&lt;/p&gt;
+&lt;p&gt;In the paper, we also introduced 3 other techniques that we embedded in the network and training to improve the result and training stability. Go check them out! 😉&lt;/p&gt;
+&lt;h3 id=&#34;transferability&#34;&gt;Transferability&lt;/h3&gt;
+&lt;p&gt;One advantage of using classic displacement mapping to create surface details
+is that once the mapping, known as surface parameterization, from the base surface to the height map
+is created, the displacement is independent of deformations of the base surface. We emulate this effect for IDF by replacing the coordinates input to the displacement net, which is obviously non-transferable as it&amp;rsquo;s bound to the global coordinate frame, with transferable features.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-comparison-between-transferable-and-non-transferable-implicit-displacement&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Comparison between transferable and non-transferable implicit displacement.&#34; srcset=&#34;
+               /publication/idf/transferable_net_hu2c1d8cbdec6fe93b34b727638a5f0023_163628_49a27eef9043d1eee4e2c8fb1b35e2b4.jpg 400w,
+               /publication/idf/transferable_net_hu2c1d8cbdec6fe93b34b727638a5f0023_163628_fbd8c6bbc2d59d26de4d6e28cbd5f884.jpg 760w,
+               /publication/idf/transferable_net_hu2c1d8cbdec6fe93b34b727638a5f0023_163628_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/transferable_net_hu2c1d8cbdec6fe93b34b727638a5f0023_163628_49a27eef9043d1eee4e2c8fb1b35e2b4.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;310&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Comparison between transferable and non-transferable implicit displacement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s first look at the detail representation compared to other methods:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-quantitative-evaluation-note-that-nglod-lod6-requires-storing-more-than-300-times-as-many-parameters-as-our-model&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Quantitative evaluation. Note that NGLOD (LOD6) requires storing more than 300 times as many parameters as our model.&#34; srcset=&#34;
+               /publication/idf/evaluation_table_hu4b0245dd5f08f0c7bba12929e3d49184_98997_0c2a63385957978d7a0ca163dc8f9992.png 400w,
+               /publication/idf/evaluation_table_hu4b0245dd5f08f0c7bba12929e3d49184_98997_3e55cd4703e941bf4fccadf5216bec74.png 760w,
+               /publication/idf/evaluation_table_hu4b0245dd5f08f0c7bba12929e3d49184_98997_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/evaluation_table_hu4b0245dd5f08f0c7bba12929e3d49184_98997_0c2a63385957978d7a0ca163dc8f9992.png&#34;
+               width=&#34;760&#34;
+               height=&#34;250&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Quantitative evaluation. Note that NGLOD (LOD6) requires storing more than 300 times as many parameters as our model.
+    &lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s some visual examples.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/idf/camera_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_102021_632b740227d0828e1c05425508bcfddc.jpg 400w,
+               /publication/idf/camera_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_102021_30bef45d185e6dd012586662a8bdb830.jpg 760w,
+               /publication/idf/camera_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_102021_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/camera_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_102021_632b740227d0828e1c05425508bcfddc.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;386&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/idf/dragon_wing_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_107650_7ddfe0746f64289ad262f07d77721012.jpg 400w,
+               /publication/idf/dragon_wing_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_107650_c00d21af88e117418494ed815179da8d.jpg 760w,
+               /publication/idf/dragon_wing_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_107650_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/dragon_wing_compressed_hud4747fbae533fc4a46b5925ca8f76b5e_107650_7ddfe0746f64289ad262f07d77721012.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;386&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;For detail transfer:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/idf/shorts_compressed_hue7f9af77642771a844c2b0609ecfb746_47145_75ace1fe4347da807b1ca0edc983a4c5.jpg 400w,
+               /publication/idf/shorts_compressed_hue7f9af77642771a844c2b0609ecfb746_47145_7ebb3cf89f8347f40523b393a9323ce5.jpg 760w,
+               /publication/idf/shorts_compressed_hue7f9af77642771a844c2b0609ecfb746_47145_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/shorts_compressed_hue7f9af77642771a844c2b0609ecfb746_47145_75ace1fe4347da807b1ca0edc983a4c5.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;410&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/idf/faces_compressed_hu6a0621bc777fb7a9da9ff6d21ac20822_58130_4d83e9ebbd8f5b3e369754a701b4cd3b.jpg 400w,
+               /publication/idf/faces_compressed_hu6a0621bc777fb7a9da9ff6d21ac20822_58130_925cdffc26bc92a0423ace6c4c1f0092.jpg 760w,
+               /publication/idf/faces_compressed_hu6a0621bc777fb7a9da9ff6d21ac20822_58130_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/idf/faces_compressed_hu6a0621bc777fb7a9da9ff6d21ac20822_58130_4d83e9ebbd8f5b3e369754a701b4cd3b.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;382&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;future-work&#34;&gt;Future work&lt;/h2&gt;
+&lt;p&gt;We hope to explore further in the realm of implicit shape editting! I&amp;rsquo;m looking forward to your inputs and ideas for collaborations.&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Chabra, Rohan, et al. &amp;ldquo;Deep local shapes: Learning local sdf priors for detailed 3d reconstruction.&amp;rdquo; European Conference on Computer Vision. Springer, Cham, 2020.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Takikawa, Towaki, et al. &amp;ldquo;Neural geometric level of detail: Real-time rendering with implicit 3D shapes.&amp;rdquo; arXiv preprint arXiv:2101.10994 (2021).&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Sitzmann, Vincent, et al. &amp;ldquo;Implicit neural representations with periodic activation functions.&amp;rdquo; Advances in Neural Information Processing Systems 33 (2020).&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Mildenhall, Ben, et al. &amp;ldquo;Nerf: Representing scenes as neural radiance fields for view synthesis.&amp;rdquo; European Conference on Computer Vision. Springer, Cham, 2020.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Input-level Inductive Biases for 3D Reconstruction</title>
+      <link>https://yifita.github.io/publication/iib/</link>
+      <pubDate>Mon, 06 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/iib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Advances in Neural Rendering</title>
+      <link>https://yifita.github.io/publication/neural_rendering_review/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/neural_rendering_review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Video Super-Resolution Using An Artificial Neural Network</title>
+      <link>https://yifita.github.io/publication/pro_sr_patent/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/pro_sr_patent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Iso-Points: Optimizing Neural Implicit Surfaces with Hybrid Representations</title>
+      <link>https://yifita.github.io/publication/iso_points/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/iso_points/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/3myC2_BIGcI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;teaser&#34; srcset=&#34;
+               /publication/iso_points/teaser_hu80b79292638aae25df499a8d7dc77d01_777796_c4a9801490fc306fbc3acdba65d334fd.png 400w,
+               /publication/iso_points/teaser_hu80b79292638aae25df499a8d7dc77d01_777796_572f823d76883eefe2c8da3e349cf268.png 760w,
+               /publication/iso_points/teaser_hu80b79292638aae25df499a8d7dc77d01_777796_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/iso_points/teaser_hu80b79292638aae25df499a8d7dc77d01_777796_c4a9801490fc306fbc3acdba65d334fd.png&#34;
+               width=&#34;739&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+We propose a hybrid neural surface representation with implicit
+functions and iso-points. The representation leads to accurate and robust
+surface reconstruction from imperfect data. The on-the-fly conversion with
+efficient iso-points extraction allows us to augment existing optimization
+pipelines in a variety of ways. In the first row, geometry-aware regularizers
+are incorporated to reconstruct a surface from a noisy point cloud; in the
+second row, geometric details are preserved in multi-view reconstruction
+via feature-aware sampling; in the last row, iso-points serve as a 3D prior
+to improve the topological accuracy of the reconstructed surface&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;overview&#34; srcset=&#34;
+               /publication/iso_points/overview_hu0c4236b94b99942f60443bad6e5b1405_288338_e2eab804711dcd67c898c44440754cfa.png 400w,
+               /publication/iso_points/overview_hu0c4236b94b99942f60443bad6e5b1405_288338_30a2abcd8e9beb40b2e712dde4cc2b7a.png 760w,
+               /publication/iso_points/overview_hu0c4236b94b99942f60443bad6e5b1405_288338_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/iso_points/overview_hu0c4236b94b99942f60443bad6e5b1405_288338_e2eab804711dcd67c898c44440754cfa.png&#34;
+               width=&#34;760&#34;
+               height=&#34;387&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+We efficiently extract a dense, uniformly distributed set of iso-points as an explicit representation for a neural implicit surface. Since the extraction is fast, iso-points can be integrated back into the optimization as a 3D geometric prior, enhancing the optimization.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Techniques for performing point-based inverse rendering</title>
+      <link>https://yifita.github.io/publication/dss_patent/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/dss_patent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Techniques for upscaling images generated with undetermined downscaling kernels</title>
+      <link>https://yifita.github.io/publication/blindsr_patent/</link>
+      <pubDate>Thu, 18 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/blindsr_patent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Detail-Driven 3D Content Creation</title>
+      <link>https://yifita.github.io/talk/detail-driven-3d-content-creation/</link>
+      <pubDate>Wed, 03 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/talk/detail-driven-3d-content-creation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pursuing high-resolution 3D Geometry with Deep Learning</title>
+      <link>https://yifita.github.io/talk/pursuing-high-resolution-3d-geometry-with-deep-learning/</link>
+      <pubDate>Thu, 11 Jun 2020 21:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/talk/pursuing-high-resolution-3d-geometry-with-deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neural Cages for Detail-Preserving 3D Deformations</title>
+      <link>https://yifita.github.io/publication/deep_cage/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/deep_cage/</guid>
+      <description>&lt;h3 id=&#34;we-can-warp-an-arbitrary-input-shape-to-match-the-grob-structure-of-an-arbitrary-target-shape-while-__preserving-all-the-local-geometric-details__-the-input-and-target-shape-is-not-required-to-have-dense-correspondences-the-same-topology-or-even-the-same-representation-form-eg-points-mesh-and-2d-image&#34;&gt;We can warp an arbitrary input shape to match the grob structure of an arbitrary target shape, while &lt;strong&gt;preserving all the local geometric details&lt;/strong&gt;. The input and target shape is not required to have dense correspondences, the same topology, or even the same representation form (e.g. points, mesh and 2D image).&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;overview&#34; srcset=&#34;
+               /publication/deep_cage/overview_huce44a8d917894b13664a2dd0ef2adf56_275854_c7bf1e12bf707e050de7525a93703aab.png 400w,
+               /publication/deep_cage/overview_huce44a8d917894b13664a2dd0ef2adf56_275854_36b247ef496add211d704eca55c02d58.png 760w,
+               /publication/deep_cage/overview_huce44a8d917894b13664a2dd0ef2adf56_275854_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/deep_cage/overview_huce44a8d917894b13664a2dd0ef2adf56_275854_c7bf1e12bf707e050de7525a93703aab.png&#34;
+               width=&#34;600&#34;
+               height=&#34;277&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+The key of our method is reducing the degrees of freedom of the deformation space by extending the traditional cage-based deformation technique.&lt;/p&gt;
+&lt;h2 id=&#34;application-1---shape-synthesis&#34;&gt;Application 1 - Shape synthesis&lt;/h2&gt;
+&lt;p&gt;We use our method to
+learn a meaningful deformation space over a collection of
+shapes within the same category, and then use random pairs
+of source and target shapes to synthesize plausible variations
+of artist-generated assets.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;comparison&#34; srcset=&#34;
+               /publication/deep_cage/comparison_hud82a3f8c98c56d6c297225582a652c0c_618165_593ffdaca5a88ad377145d2a31f23b90.png 400w,
+               /publication/deep_cage/comparison_hud82a3f8c98c56d6c297225582a652c0c_618165_4af48eb63123ed4a0cafa467fb9c3fdf.png 760w,
+               /publication/deep_cage/comparison_hud82a3f8c98c56d6c297225582a652c0c_618165_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/deep_cage/comparison_hud82a3f8c98c56d6c297225582a652c0c_618165_593ffdaca5a88ad377145d2a31f23b90.png&#34;
+               width=&#34;760&#34;
+               height=&#34;542&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;application-2---deformation-transfer&#34;&gt;Application 2 - Deformation transfer&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;dt&#34; srcset=&#34;
+               /publication/deep_cage/deformation_transfer_hucf5be2d167f530b3c6c4ccf6ffd30f6f_1897426_03bcac995bf1957e98ad55eaecfedd0f.jpg 400w,
+               /publication/deep_cage/deformation_transfer_hucf5be2d167f530b3c6c4ccf6ffd30f6f_1897426_8d93bff5a67a0157ab6ce07ec3d6b11c.jpg 760w,
+               /publication/deep_cage/deformation_transfer_hucf5be2d167f530b3c6c4ccf6ffd30f6f_1897426_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/deep_cage/deformation_transfer_hucf5be2d167f530b3c6c4ccf6ffd30f6f_1897426_03bcac995bf1957e98ad55eaecfedd0f.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;529&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+We first learn the cage deformation space
+for a template source shape (top left) with known pose and body shape
+variations. Then, we annotate predefined landmarks on new characters
+in neutral poses (left column, rows 2-4). At test time, given novel target
+poses (top row, green) without known correspondences to the template, we
+transfer their poses to the other characters (blue).&lt;/p&gt;
+&lt;p&gt;Due to the agnostic nature of cage-deformations to
+the underlying shape, we are able to seamlessly combine
+machine learning and traditional geometry processing to
+generalize to never-observed characters, even if the novel source and target characters are morphologically very different from the both the template source.&lt;/p&gt;
+&lt;h2 id=&#34;talk&#34;&gt;Talk&lt;/h2&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UZLAj2xTojY&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Blind Image Super-Resolution with Spatially Variant Degradations</title>
+      <link>https://yifita.github.io/publication/variational_blindsr/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/variational_blindsr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Differentiable Surface Splatting for Point-based Geometry Processing</title>
+      <link>https://yifita.github.io/publication/dss/</link>
+      <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/dss/</guid>
+      <description>&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;teaser&#34; srcset=&#34;
+               /publication/dss/teaser_hu0603bb4b795549b646695bb3eace70fe_787383_cbfb06601aca7f6c5d2cb8f982d6d2c5.png 400w,
+               /publication/dss/teaser_hu0603bb4b795549b646695bb3eace70fe_787383_619e4e35c76c2f70ccddd6c5d9f2869b.png 760w,
+               /publication/dss/teaser_hu0603bb4b795549b646695bb3eace70fe_787383_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/dss/teaser_hu0603bb4b795549b646695bb3eace70fe_787383_cbfb06601aca7f6c5d2cb8f982d6d2c5.png&#34;
+               width=&#34;760&#34;
+               height=&#34;172&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;shape-synthesis&#34;&gt;Shape Synthesis&lt;/h3&gt;
+&lt;p&gt;We can synthesize shapes from multiple 2D images. This process is not constrained by topology changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;synthesis&#34; srcset=&#34;
+               /publication/dss/yoga_hud75168a24873154fc3315cd4622e3aa1_3068741_9bcc5fed85b3831a83470be65035bdf8.png 400w,
+               /publication/dss/yoga_hud75168a24873154fc3315cd4622e3aa1_3068741_f64e0148a8b36c351661d6e852e75d35.png 760w,
+               /publication/dss/yoga_hud75168a24873154fc3315cd4622e3aa1_3068741_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/dss/yoga_hud75168a24873154fc3315cd4622e3aa1_3068741_9bcc5fed85b3831a83470be65035bdf8.png&#34;
+               width=&#34;760&#34;
+               height=&#34;559&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;point-cloud-filering&#34;&gt;Point Cloud Filering&lt;/h3&gt;
+&lt;p&gt;Using DSS we can directly apply image-based filters to a point cloud to achieve various geometric effect.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;filtering&#34; srcset=&#34;
+               /publication/dss/DSSfilter_hu2b42d738bd54101b04a2a9934a042558_2336149_c865e07502fc7add4fa85d9eb434d55c.png 400w,
+               /publication/dss/DSSfilter_hu2b42d738bd54101b04a2a9934a042558_2336149_9a56bb212eb773c6595f9674a09e7453.png 760w,
+               /publication/dss/DSSfilter_hu2b42d738bd54101b04a2a9934a042558_2336149_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/dss/DSSfilter_hu2b42d738bd54101b04a2a9934a042558_2336149_c865e07502fc7add4fa85d9eb434d55c.png&#34;
+               width=&#34;760&#34;
+               height=&#34;564&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;point-cloud-denoising&#34;&gt;Point Cloud Denoising&lt;/h3&gt;
+&lt;p&gt;We create state-of-the-art point cloud denoising results by marrying our differential renderer with the famous image-to-image translation deep learning framework &lt;em&gt;Pix2Pix&lt;/em&gt;.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Denoising&#34; srcset=&#34;
+               /publication/dss/armadillo_2_all_hue32edefd6be881a28491b18f438ad233_2527235_db1431c0c006a6885c68224aba69a866.png 400w,
+               /publication/dss/armadillo_2_all_hue32edefd6be881a28491b18f438ad233_2527235_95c562bda20d30b5d4523436d46d4364.png 760w,
+               /publication/dss/armadillo_2_all_hue32edefd6be881a28491b18f438ad233_2527235_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/dss/armadillo_2_all_hue32edefd6be881a28491b18f438ad233_2527235_db1431c0c006a6885c68224aba69a866.png&#34;
+               width=&#34;760&#34;
+               height=&#34;427&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;accompanying-video&#34;&gt;Accompanying Video&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/Q8iTkmIky0o&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;acknowledgement&#34;&gt;Acknowledgement&lt;/h3&gt;
+&lt;p&gt;We would like to thank Federico Danieli for the insightful discussion, Philipp Herholz for the timely feedack, Romann Weber for the video voice-over and Derek Liu for the help during the rebuttal.
+This work was supported in part by gifts from Adobe, Facebook and Snap, Inc.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Neural Shapes</title>
+      <link>https://yifita.github.io/project/neural-shape/</link>
+      <pubDate>Sat, 29 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/project/neural-shape/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Patch-base progressive 3D Point Set Upsampling</title>
+      <link>https://yifita.github.io/publication/3pu/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/3pu/</guid>
+      <description>&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;teaser&#34; srcset=&#34;
+               /publication/3pu/teaser_hue941d5737ff9a65a92341b6d94789b13_1958401_403fe35eea01c862d9d7782de110b3f2.png 400w,
+               /publication/3pu/teaser_hue941d5737ff9a65a92341b6d94789b13_1958401_56fd086f5f1bfed34ccff2acff38b6f4.png 760w,
+               /publication/3pu/teaser_hue941d5737ff9a65a92341b6d94789b13_1958401_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/3pu/teaser_hue941d5737ff9a65a92341b6d94789b13_1958401_403fe35eea01c862d9d7782de110b3f2.png&#34;
+               width=&#34;760&#34;
+               height=&#34;148&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
+&lt;center&gt;
+$16\times$ upsampling from 625 points
+&lt;/center&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/3pu/figure_sparse_hud2ea52a596ae36c36eb01f40e00c846e_1836455_46ecceca49bf37b93f376b6d786f94bd.png 400w,
+               /publication/3pu/figure_sparse_hud2ea52a596ae36c36eb01f40e00c846e_1836455_3c2ed8e0adfe10d3d734d9f807780863.png 760w,
+               /publication/3pu/figure_sparse_hud2ea52a596ae36c36eb01f40e00c846e_1836455_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/3pu/figure_sparse_hud2ea52a596ae36c36eb01f40e00c846e_1836455_46ecceca49bf37b93f376b6d786f94bd.png&#34;
+               width=&#34;760&#34;
+               height=&#34;343&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;center&gt;$16\times$ upsampling from 5000 points&lt;/center&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/3pu/figure_dense_hu014ad1967466bfe0de5a18b8abf9e18d_3850114_40e045a89003dcd4995f9dd5d4b5d65e.png 400w,
+               /publication/3pu/figure_dense_hu014ad1967466bfe0de5a18b8abf9e18d_3850114_07a54e6eed0cb5f41d1c5da462547054.png 760w,
+               /publication/3pu/figure_dense_hu014ad1967466bfe0de5a18b8abf9e18d_3850114_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/3pu/figure_dense_hu014ad1967466bfe0de5a18b8abf9e18d_3850114_40e045a89003dcd4995f9dd5d4b5d65e.png&#34;
+               width=&#34;760&#34;
+               height=&#34;531&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;center&gt;$16\times$ upsampling from scan data&lt;/center&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/3pu/real_scan_hu291df38f9bd4033062d7137c94f34fb5_4162448_777fe85ae13531d32d6456a4a9f4f382.png 400w,
+               /publication/3pu/real_scan_hu291df38f9bd4033062d7137c94f34fb5_4162448_4122e220a57ca94df431a51ac1f9a94b.png 760w,
+               /publication/3pu/real_scan_hu291df38f9bd4033062d7137c94f34fb5_4162448_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/3pu/real_scan_hu291df38f9bd4033062d7137c94f34fb5_4162448_777fe85ae13531d32d6456a4a9f4f382.png&#34;
+               width=&#34;760&#34;
+               height=&#34;687&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;center&gt;$16\times$ upsampling from virtual scan data&lt;/center&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/3pu/scan_hud8ec081405baf5878204f29fd86bddd9_1766035_157938174fe19d0f82fe7f5812222c09.png 400w,
+               /publication/3pu/scan_hud8ec081405baf5878204f29fd86bddd9_1766035_fb3ba9a67f7c936b616280273a5bcbd4.png 760w,
+               /publication/3pu/scan_hud8ec081405baf5878204f29fd86bddd9_1766035_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/3pu/scan_hud8ec081405baf5878204f29fd86bddd9_1766035_157938174fe19d0f82fe7f5812222c09.png&#34;
+               width=&#34;704&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;PU-Net&lt;/em&gt;: L. Yu, X. Li, C.-W. Fu, D. Cohen-Or, and P.-A. Heng, &amp;ldquo;Pu-net: Point cloud upsampling network&amp;rdquo;, CVPR 2018&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;EC-Net&lt;/em&gt;: L. Yu, X. Li, C.-W. Fu, D. Cohen-Or, and P.-A. Heng, &amp;ldquo;Ec-net: an edge-aware point set consolidation network&amp;rdquo;,  ECCV 2018&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;EAR&lt;/em&gt;: H. Huang, S. Wu, M. Gong, D. Cohen-Or, U. Ascher, and H. Zhang, &amp;ldquo;Edge-aware point set resampling&amp;rdquo;, ACM ToG 2013&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;WLOP&lt;/em&gt;: H. Huang, D. Li, H. Zhang, U. Ascher, and D. Cohen-Or, &amp;ldquo;Consolidation of unorganized point clouds for surface reconstruction&amp;rdquo;, SIGGRAPH Asia 2009&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Point-based geometry processing</title>
+      <link>https://yifita.github.io/project/point-geometry/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/project/point-geometry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Fully Progressive Approach to Single-Image Super-Resolution</title>
+      <link>https://yifita.github.io/publication/prosr/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/prosr/</guid>
+      <description>&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;teaser&#34; srcset=&#34;
+               /publication/prosr/teaser_hu7bc39c5843791f2e96e2bf4a6d0ee2c4_908466_2e722302f31b6190be461d5b785c3372.png 400w,
+               /publication/prosr/teaser_hu7bc39c5843791f2e96e2bf4a6d0ee2c4_908466_d1d9e47169d4c470fc9eb628112c6528.png 760w,
+               /publication/prosr/teaser_hu7bc39c5843791f2e96e2bf4a6d0ee2c4_908466_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/prosr/teaser_hu7bc39c5843791f2e96e2bf4a6d0ee2c4_908466_2e722302f31b6190be461d5b785c3372.png&#34;
+               width=&#34;760&#34;
+               height=&#34;213&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;benchmark&#34; srcset=&#34;
+               /publication/prosr/prosr_benchmark_hu0c14cc2d175ff2dbd1dc10cd687365c1_129303_8cfd438c60ac5ceb4548dd2fc869808f.png 400w,
+               /publication/prosr/prosr_benchmark_hu0c14cc2d175ff2dbd1dc10cd687365c1_129303_2bfc699c87d1cdb335bfccb105be4071.png 760w,
+               /publication/prosr/prosr_benchmark_hu0c14cc2d175ff2dbd1dc10cd687365c1_129303_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/prosr/prosr_benchmark_hu0c14cc2d175ff2dbd1dc10cd687365c1_129303_8cfd438c60ac5ceb4548dd2fc869808f.png&#34;
+               width=&#34;760&#34;
+               height=&#34;154&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;MsLapSRN: Lai, Wei-Sheng, et al. &amp;ldquo;Fast and Accurate Image Super-Resolution with Deep Laplacian Pyramid Networks.&amp;rdquo; arXiv preprint arXiv:1710.01992 (2017).&lt;/p&gt;
+&lt;p&gt;EDSR, MDSR: Lim, Bee, et al. &amp;ldquo;Enhanced deep residual networks for single image super-resolution.&amp;rdquo; The IEEE CVPR (CVPR) Workshops. Vol. 1. No. 2. 2017.&lt;/p&gt;
+&lt;p&gt;RDN:Zhang, Yulun, et al. &amp;ldquo;Residual Dense Network for Image Super-Resolution.&amp;rdquo;  The IEEE CVPR (CVPR). 2018.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- ### Accompanying Video ###
+(Best viewed in full-screen mode)
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/ON3XHnaDepE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+ --&gt;
+&lt;h3 id=&#34;featured-video&#34;&gt;Featured Video&lt;/h3&gt;
+&lt;p&gt;It&amp;rsquo;s a pleasure to be featured in &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2 minute paper&lt;/a&gt;&amp;rdquo;, an amazing YouTube channel that introduces latest development of AI in a variety of applications.
+Here&amp;rsquo;s the video that talks about our work.
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/HvH0b9K_Iro&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Single-Image Super-Resolution</title>
+      <link>https://yifita.github.io/project/single-image-super-resolution/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/project/single-image-super-resolution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Two-Stream SR-CNNs for Action Recognition in Videos</title>
+      <link>https://yifita.github.io/publication/action_srcnn/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/publication/action_srcnn/</guid>
+      <description>&lt;h3 id=&#34;network-architecture&#34;&gt;Network Architecture&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Architecture&#34; srcset=&#34;
+               /publication/action_srcnn/featured_hu1e735c8506cd55df4c6fe72ecd504b14_61342_b1318c6396a224220e8c881567054a19.jpg 400w,
+               /publication/action_srcnn/featured_hu1e735c8506cd55df4c6fe72ecd504b14_61342_3fb4c7052b6d511caca20476b3a561c3.jpg 760w,
+               /publication/action_srcnn/featured_hu1e735c8506cd55df4c6fe72ecd504b14_61342_1200x1200_fit_q75_lanczos.jpg 1200w&#34;
+               src=&#34;https://yifita.github.io/publication/action_srcnn/featured_hu1e735c8506cd55df4c6fe72ecd504b14_61342_b1318c6396a224220e8c881567054a19.jpg&#34;
+               width=&#34;760&#34;
+               height=&#34;337&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yifita.github.io/admin/config.yml</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://yifita.github.io/admin/config.yml</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
