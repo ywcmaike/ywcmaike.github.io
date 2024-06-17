@@ -171,6 +171,122 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
             </td>
           </tr>
 
+          <tr onmouseout="meshanything_stop()" onmouseover="meshanything_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='meshanything_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/MeshAnything/demo_video.gif" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/MeshAnything/demo_video.gif' width=160>
+              </div>
+              <script type="text/javascript">
+                function meshanything_start() {
+                  document.getElementById('meshanything_image').style.opacity = "1";
+                }
+
+                function meshanything_stop() {
+                  document.getElementById('meshanything_image').style.opacity = "0";
+                }
+                meshanything_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  MeshAnything: Artist-Created Mesh Generation with Autoregressive Transformers
+                  </papertitle>  <br>
+                  <a>Yiwen Chen</a>, 
+                  <a>Tong He</a>, 
+                  <a>Di Huang</a>, 
+                  <strong>Weicai Ye</strong>, 
+                  <a>Sijin Chen</a>, 
+                  <a>Jiaxiang Tang</a>, 
+                  <a>Xin Chen</a>,
+                  <a>Zhongang Cai</a>, 
+                  <a>Lei Yang</a>, 
+                  <a>Gang Yu</a>, 
+                  <a>Guosheng Lin</a>, 
+                  <a>Chi Zhang</a>
+                    
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="https://buaacyw.github.io/mesh-anything/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2406.10163">arXiv</a>
+                    /
+                    <a href="https://github.com/buaacyw/MeshAnything">code</a>
+                    /
+                    <a href="https://huggingface.co/spaces/Yiwen-ntu/MeshAnything">huggingface</a>
+              <p></p>
+              <p>  MeshAnything mimics human artist in extracting meshes from any 3D representations. 
+                It can be combined with various 3D asset production pipelines, such as 3D reconstruction and generation, to convert their results into Artist-Created Meshes that can be seamlessly applied in 3D industry.
+                </p>
+                              </td> 
+          </tr>
+
+          <tr onmouseout="luminat2x_stop()" onmouseover="luminat2x_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='pointmamba_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/Lumina-T2X/demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/Lumina-T2X/teaser.png' width=160>
+              </div>
+              <script type="text/javascript">
+                function luminat2x_start() {
+                  document.getElementById('luminat2x_image').style.opacity = "1";
+                }
+
+                function luminat2x_stop() {
+                  document.getElementById('luminat2x_image').style.opacity = "0";
+                }
+                luminat2x_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  Lumina-T2X: Transforming Text into Any Modality, Resolution, and Duration via Flow-based Large Diffusion Transformers
+                  </papertitle>                    <br>
+                  <a>Peng Gao</a>,
+                  <a>Le Zhuo</a>, 
+                  <a>Dongyang Liu</a>, 
+                  <a>Ruoyi Du</a>, 
+                  <a>Xu Luo</a>, 
+                  <a>Longtian Qiu</a>, 
+                  <a>Yuhang Zhang</a>, 
+                  <a>Rongjie Huang</a>, 
+                  <a>Shijie Geng</a>, 
+                  <a>Renrui Zhang</a>, 
+                  <a>unlin Xie</a>, 
+                  <a> Wenqi Shao</a>, 
+                  <a>Zhengkai Jiang</a>, 
+                  <a>Tianshuo Yang</a>, 
+                  <strong>Weicai Ye</strong>, 
+                  <a>Tong He</a>, <a>Jingwen He</a>, <a>Yu Qiao</a>, <a>Hongsheng Li</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="https://github.com/Alpha-VLLM/Lumina-T2X">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2405.05945">arXiv</a>
+                    /
+                    <a href="https://github.com/Alpha-VLLM/Lumina-T2X">code</a>
+                    / 
+                    <a href="http://106.14.2.150:10021/">demo</a>
+                    /
+                    <a href="https://huggingface.co/Alpha-VLLM/Lumina-T2I">huggingface</a>
+              <p></p>
+              <p>  Proposed flow-based large diffusion transformers foundation model for transforming text into any modality (image, video, 3D, Audio, music, etc.), resolution, and duration.
+                            </p>
+                </td> 
+          </tr>
+
+          
+
           <tr onmouseout="datapsfm_stop()" onmouseover="datapsfm_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -526,112 +642,7 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
                 </td> 
           </tr>
 
-          <tr onmouseout="luminat2x_stop()" onmouseover="luminat2x_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='pointmamba_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/Lumina-T2X/teaser.png" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/Lumina-T2X/teaser.png' width=160>
-              </div>
-              <script type="text/javascript">
-                function luminat2x_start() {
-                  document.getElementById('luminat2x_image').style.opacity = "1";
-                }
-
-                function luminat2x_stop() {
-                  document.getElementById('luminat2x_image').style.opacity = "0";
-                }
-                luminat2x_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  Lumina-T2X: Transforming Text into Any Modality, Resolution, and Duration via Flow-based Large Diffusion Transformers
-                  </papertitle>                    <br>
-                  <a>Peng Gao</a>,
-                  <a>Le Zhuo</a>, 
-                  <a>Dongyang Liu</a>, 
-                  <a>Ruoyi Du</a>, 
-                  <a>Xu Luo</a>, 
-                  <a>Longtian Qiu</a>, 
-                  <a>Yuhang Zhang</a>, 
-                  <a>Rongjie Huang</a>, 
-                  <a>Shijie Geng</a>, 
-                  <a>Renrui Zhang</a>, 
-                  <a>unlin Xie</a>, 
-                  <a> Wenqi Shao</a>, 
-                  <a>Zhengkai Jiang</a>, 
-                  <a>Tianshuo Yang</a>, 
-                  <strong>Weicai Ye</strong>, 
-                  <a>Tong He</a>, <a>Jingwen He</a>, <a>Yu Qiao</a>, <a>Hongsheng Li</a>
-                    <br>
-                    <em>Arxiv</em> 2024, Under Review
-                    <br>
-                    <a href="">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2405.05945">arXiv</a>
-                    /
-                    <a href="https://github.com/Alpha-VLLM/Lumina-T2X">code</a>
-                    / 
-                    <a href="http://106.14.2.150:10021/">demo</a>
-              <p></p>
-              <p>  Proposed flow-based large diffusion transformers foundation model for transforming text into any modality (image, video, 3D, Audio, music, etc.), resolution, and duration.
-                            </p>
-                </td> 
-          </tr>
-
-          <tr onmouseout="artistmesh_stop()" onmouseover="artistmesh_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='artistmesh_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/ArtistMeshGPT/framework.jpg" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/ArtistMeshGPT/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function artistmesh_start() {
-                  document.getElementById('artistmesh_image').style.opacity = "1";
-                }
-
-                function artistmesh_stop() {
-                  document.getElementById('artistmesh_image').style.opacity = "0";
-                }
-                artistmesh_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  Artist-Created Mesh Generation with Autoregressive Transformers.
-                  </papertitle>  <br>
-                  <a>Yiwen Chen</a>, 
-                  <a>Tong He</a>, 
-                  <a>Di Huang</a>, 
-                  <strong>Weicai Ye</strong>, 
-                  <a>Sijin Chen</a>, 
-                  <a>Jiaxiang Tang</a>, 
-                  <a>Zhongang Cai</a>, 
-                  <a>Lei Yang</a>, 
-                  <a>Gang Yu</a>, 
-                  <a>Guosheng Lin</a>, 
-                  <a>Chi Zhang</a>
-                    
-                    <br>
-                    <em>Arxiv</em> 2024 coming, Under Review
-                    <br>
-                    <a href="">project page</a>
-                    /
-                    <a href="">arXiv</a>
-                    /
-                    <a href="">code</a>
-              <p></p>
-              <p>  Proposed a mesh generation model capable of generating artist meshes based on a reference shape, which treats mesh tokens as language tokens and employs a pre-trained shape encoder to encode the reference shape for conditional mesh generation.  </p>
-                </td> 
-          </tr>
+          
 
           <tr onmouseout="pointmamba_stop()" onmouseover="pointmamba_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
