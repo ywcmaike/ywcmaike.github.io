@@ -310,7 +310,7 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>
-                  DATAP-SfM: Dynamic-Aware Tracking Any Point for Structure from Motion in the Wild                
+                  DATAP-SfM: Dynamic-Aware Tracking Any Point for Robust Dense Structure from Motion in the Wild              
                 </papertitle>
               </a>
                     <br>
@@ -338,6 +338,61 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
             </td>
           </tr>
           
+          <tr onmouseout="FedSurfGS_stop()" onmouseover="FedSurfGS_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='FedSurfGS_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/FedSurfGS/demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/FedSurfGS/framework.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function FedSurfGS_start() {
+                  document.getElementById('FedSurfGS_image').style.opacity = "1";
+                }
+
+                function FedSurfGS_stop() {
+                  document.getElementById('FedSurfGS_image').style.opacity = "0";
+                }
+                FedSurfGS_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  FedSurfGS: Scalable 3D Surface Gaussian Splatting with Federated Learning for Large Scene Reconstruction               </papertitle>                </a>
+                    <br>
+                    <strong>Weicai Ye</strong>, 
+                    <a>Hao Li</a>, 
+                    <a>Yuanyuan Gao</a>,
+                    <a>Yalun Dai</a>, 
+                    <a>Junyi Chen</a>, 
+                    <a>Nanqing Dong</a>, 
+                    <a>Dingwen Zhang</a>, 
+                    <a>Hujun Bao</a>, 
+                    <a>Wanli Ouyang</a>, 
+                    <a>Yu Qiao</a>, 
+                    <a>Tong He</a>, 
+                    <a>Guofeng Zhang</a> 
+                    <br>
+                    <em>Arxiv</em> 2024, coming
+                    <br>
+                    <a href="https://zju3dv.github.io/FedSurfGS/">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="https://github.com/zju3dv/FedSurfGS">code</a>
+                    <!-- / -->
+                    <!-- <a href="images/PGSR/res3.jpg">Result1</a> -->
+                    <!-- / -->
+                    <!-- <a href="images/PGSR/res1.jpg">Result2</a> -->
+              <p></p>
+              <p> First cloud-edge-device hierarchical framework with federated learning for large-scale high-fidelity surface reconstruction in a distributed manner, 
+                achieving balance between high-precision reconstruction and low-cost memory. 
+                </td> 
+          </tr>
+
           <tr onmouseout="pgsr_stop()" onmouseover="pgsr_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -389,6 +444,56 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
               <p> Proposed photorealistic rendering and efficient high-fidelity surface reconstruction model <strong>without any pretrained priors</strong>, outperforming 3DGS-based (Sugar, 2DGS, Gaussian Opacity Fields, etc.) and SDF-Based methods on T&T, DTU, etc. with faster training.
                 e.g. (ours: only 1 hour vs Neuralangelo 128+ hours) 
                 </td> 
+          </tr>
+
+          <tr onmouseout="DynaSurfGS_stop()" onmouseover="DynaSurfGS_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='DynaSurfGS_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/DynaSurfGS/teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/DynaSurfGS/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function DynaSurfGS_start() {
+                  document.getElementById('DynaSurfGS_image').style.opacity = "1";
+                }
+
+                function DynaSurfGS_stop() {
+                  document.getElementById('DynaSurfGS_image').style.opacity = "0";
+                }
+                DynaSurfGS_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  DynaSurfGS: Dynamic Surface Reconstruction with Planar-based Gaussian Splatting
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Weiwei Cai</a>, 
+                    <strong>Weicai Ye†‡</strong>,
+                    <a>Peng Ye</a>, 
+                    <a>Tong He</a>, 
+                    <a>Tao Chen†</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="https://open3dvlab.github.io/DynaSurfGS">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="https://github.com/Open3DVLab/DynaSurfGS">code</a>
+                    <!-- /
+                    <a href="images/GigaGS/demo.jpg">More results</a> -->
+              <p></p>
+              <p>
+                Based on PGSR, proposed the DynaSurfGS framework, which can facilitate real-time photorealistic rendering and dynamic high-fidelity surface reconstruction, 
+                achieving smooth surfaces with meticulous geometry.
+              </p>
+            </td>
           </tr>
 
           <tr onmouseout="gigags_stop()" onmouseover="gigags_start()">
@@ -531,7 +636,7 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
                     /
                     <a href="">arXiv</a>
                     /
-                    <a href="">code</a>
+                    <a href="https://github.com/Open3DVLab/NeuRodin">code</a>
                     / 
                     <a href="images/NeuRodin/cater.gif">result1</a>
                     /
