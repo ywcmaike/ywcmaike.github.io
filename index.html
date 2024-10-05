@@ -21,9 +21,9 @@
               <p style="text-align:center">
                 <name>Weicai Ye 叶伟才</name>
               </p>
-              <p>I am a final-year Ph.D. student at ZJU3DV, State Key Lab of CAD&CG, Zhejiang
-University, advised by <a href="http://www.cad.zju.edu.cn/home/bao/">Prof. Hujun Bao</a> and <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Prof. Guofeng Zhang</a>. 
-I am interning at Shanghai AI Laboratory, working with <a href="https://tonghe90.github.io/">Dr. Tong He</a>, <a href="https://wlouyang.github.io/">Prof. Wanli Ouyang</a> and <a href="https://mmlab.siat.ac.cn/yuqiao">Prof. Yu Qiao</a>.</p>
+              <p>  I received my Ph.D. degree from ZJU3DV, State Key Lab of CAD&CG, Zhejiang
+                University in 2024, advised by <a href="http://www.cad.zju.edu.cn/home/bao/">Prof. Hujun Bao</a> and <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Prof. Guofeng Zhang</a>. 
+Before that, I also interned at Shanghai AI Laboratory, working with <a href="https://tonghe90.github.io/">Dr. Tong He</a>, <a href="https://wlouyang.github.io/">Prof. Wanli Ouyang</a> and <a href="https://mmlab.siat.ac.cn/yuqiao">Prof. Yu Qiao</a>.</p>
 
 Previously, I was a visiting researcher in the Computer Vision and Geometry Group (CVG), ETH Zurich, advised by <a href="https://people.inf.ethz.ch/marc.pollefeys/">Prof. Marc Pollefeys</a>.
               </p>
@@ -32,8 +32,9 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
                 I'm interest in <strong>3D Vision Foundation Model, World Model, Physical World Simulator, and Embodied AI, especially correspondence, 3D/4D reconstruction, rendering, generation, and robotics manipulation</strong>.
               </p>
 
-              <p> <font color="red">I will graduate in September 2024. I'm actively looking for research scientist position, postdoc or startup. </font>
-              </p>
+              <!-- <p> <font color="red">I will graduate in September 2024. I'm actively looking for research scientist position, postdoc or startup. </font>
+              </p> -->
+
               <p style="text-align:center">
                 <a href="mailto:maikeyeweicai@gmail.com">Email</a> &nbsp/&nbsp
                 <a href="images/WeicaiYe_CV_clean.pdf">CV</a> &nbsp/&nbsp
@@ -117,6 +118,104 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
               </p>
             </td>
           </tr> -->
+
+          <tr onmouseout="gst_stop()" onmouseover="gst_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='gst_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/gst/framework.jpg" type="video/mp4">
+                <!-- <img src='images/gst/framework.jpg' width=160> -->
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/gst/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function gst_start() {
+                  document.getElementById('gst_image').style.opacity = "1";
+                }
+
+                function gst_stop() {
+                  document.getElementById('gst_image').style.opacity = "0";
+                }
+                gst_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  Where Am I and What Will I See: An Auto-Regressive Model for Spatial Localization and View Prediction
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Junyi Chen</a>, 
+                    <a>Di Huang</a>, 
+                    <strong>Weicai Ye</strong></a>,
+                    <a>Wanli Ouyang</a>,
+                    <a>Tong He</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="">code</a>
+                    /
+                    <a href="images/gst/framework.jpg">framework</a>
+              <p></p>
+              <p>Proposed a novel auto-regressive framework that jointly addresses spatial localization and view prediction. 
+              </p>
+            </td>
+          </tr>
+
+          <tr onmouseout="HiSplat_stop()" onmouseover="HiSplat_start()" >
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='HiSplat_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/HiSplat/HiSplat.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/HiSplat/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function HiSplat_start() {
+                  document.getElementById('HiSplat_image').style.opacity = "1";
+                }
+
+                function HiSplat_stop() {
+                  document.getElementById('HiSplat_image').style.opacity = "0";
+                }
+                HiSplat_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  HiSplat: Hierarchical 3D Gaussian Splatting for Generalizable Sparse-View Reconstruction
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Shengji Tang</a>, 
+                    <strong>Weicai Ye†</strong></a>,
+                    <a>Peng Ye</a>, 
+                    <a>Weihao Lin</a>, 
+                    <a>Yang Zhou</a>, 
+                    <a>Tao Chen</a>, 
+                    <a>Wanli Ouyang</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="">code</a>
+              <p></p>
+              <p>Proposed a hierarchical manner in generalizable 3D Gaussian Splatting to construct hierarchical 3D Gaussians via a coarse-to-fine strategy, 
+                which significantly enhances reconstruction quality and cross-dataset generalization.
+              </p>
+            </td>
+          </tr>
 
           <tr onmouseout="diffpano_stop()" onmouseover="diffpano_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
@@ -831,7 +930,7 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
                     
                     
                     <br>
-                    <em>Arxiv</em> 2024, Under Review
+                    <em>NeurIPS 2024 Datasets and Benchmarks Track </em>, CCF-A 
                     <br>
                     <a href="https://haoyizhu.github.io/PointCloudMatters.github.io/">project page</a>
                     /
