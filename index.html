@@ -217,6 +217,63 @@ Previously, I was a visiting researcher in the Computer Vision and Geometry Grou
             </td>
           </tr>
 
+          <tr onmouseout="DGTR_stop()" onmouseover="DGTR_start()" ></tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='DGTR_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/DGTR/DGTR.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/DGTR/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function DGTR_start() {
+                  document.getElementById('DGTR_image').style.opacity = "1";
+                }
+
+                function DGTR_stop() {
+                  document.getElementById('DGTR_image').style.opacity = "0";
+                }
+                DGTR_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  DGTR: Distributed Gaussian Turbo-Reconstruction for Sparse-View Vast Scenes
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Hao Li</a>, 
+                    <a>Yuanyuan Gao</a>, 
+                    <a>Haosong Peng</a>, 
+                    <a>Chenming Wu</a>, 
+                    <strong>Weicai Ye</strong>,
+                    <a>Yufeng Zhan</a>,
+                    <a>Chen Zhao</a>, 
+                    <a>Dingwen Zhang</a>, 
+                    <a>Jingdong Wang</a>, 
+                    <a>Junwei Han</a>, 
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="">code</a>
+                    /
+                    <a href="images/DGTR/framework.jpg">framework</a>
+              <p></p>
+              <p>
+                Proposed a novel distributed framework for efficient
+                Gaussian reconstruction for sparse-view vast scenes, leveraging feed-forward
+                Gaussian model for fast inference and a global alignment algorithm to ensure geometric
+                consistency.
+              </p>
+            </td>
+          </tr>
+
           <tr onmouseout="diffpano_stop()" onmouseover="diffpano_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
