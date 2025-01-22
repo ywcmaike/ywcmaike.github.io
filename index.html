@@ -61,13 +61,19 @@
                 <div class="marker"><div>[2025-01] Welcome to check out our <a href="https://klingai.kuaishou.com/image-to-video/multi-id/new">multi-reference images to video generation</a> in the Kling app/web. </div>
               </li>
               <li>
+                <div class="marker"><div>[2024-12] One paper accepted to AAAI 2025 (corresponding author).</div>
+            </li>
+            <li>
+              <div class="marker"><div>[2024-11] PGSR was accepted to TVCG 2024.</div>
+          </li>
+              <li>
                   <div class="marker"><div>[2024-10] Excited to join Kling Team, Kuaishou Technology, as a senior researcher.</div>
               </li>
               <li>
                   <div class="marker"><div>[2024-09] Defended my Ph.D. thesis with 5A rating.</div>
               </li>
               <li>
-                  <div class="marker">[2024-09] Two papers accepted to NeurIPS 2024 (1 first-author and 1 corresponding author).</div>
+                  <div class="marker">[2024-09] Three papers accepted to NeurIPS 2024 (1 first-author and 1 corresponding author).</div>
               </li>
             </ul>
           </td>
@@ -290,6 +296,59 @@
             </td>
           </tr>
 
+          <tr onmouseout="CoSurfGS_stop()" onmouseover="CoSurfGS_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='CoSurfGS_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/FedSurfGS/demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/FedSurfGS/framework.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function CoSurfGS_start() {
+                  document.getElementById('CoSurfGS_image').style.opacity = "1";
+                }
+
+                function CoSurfGS_stop() {
+                  document.getElementById('CoSurfGS_image').style.opacity = "0";
+                }
+                CoSurfGS_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  CoSurfGS: Collaborative 3D Surface Gaussian Splatting with Distributed Learning for Large Scene reconstruction               </papertitle>                </a>
+                    <br>
+                    <a>Yuanyuan Gao</a>, 
+                    <a>Yalun Dai</a>, 
+                    <a>Hao Li</a>,
+                    <strong>Weicai Ye†</strong>, 
+                    <a>Junyi Chen</a>, 
+                    <a>Danpeng Chen</a>, 
+                    <a>Dingwen Zhang</a>, 
+                    <a>Tong He</a>, 
+                    <a>Guofeng Zhang</a> 
+                    <a>Junwei Han</a>
+                    <br>
+                    <em>Arxiv</em> 2024
+                    <br>
+                    <a href="https://gyy456.github.io/CoSurfGS/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2412.17612">arXiv</a>
+                    /
+                    <a href="https://github.com/zju3dv/CoSurfGS">code</a>
+                    <!-- / -->
+                    <!-- <a href="images/PGSR/res3.jpg">Result1</a> -->
+                    <!-- / -->
+                    <!-- <a href="images/PGSR/res1.jpg">Result2</a> -->
+              <p></p>
+              <p> First cloud-edge-device hierarchical framework with Distributed Learning for large-scale high-fidelity surface reconstruction, 
+                achieving balance between high-precision reconstruction and low-cost memory. 
+                </td> 
+          </tr>
+
           <tr onmouseout="gst_stop()" onmouseover="gst_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -335,165 +394,6 @@
                     <!-- <a href="images/gst/framework.jpg">framework</a> -->
               <p></p>
               <p>Proposed a novel auto-regressive framework that jointly addresses spatial localization and view prediction. 
-              </p>
-            </td>
-          </tr>
-
-          <tr onmouseout="HiSplat_stop()" onmouseover="HiSplat_start()" >
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='HiSplat_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/HiSplat/HiSplat.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/HiSplat/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function HiSplat_start() {
-                  document.getElementById('HiSplat_image').style.opacity = "1";
-                }
-
-                function HiSplat_stop() {
-                  document.getElementById('HiSplat_image').style.opacity = "0";
-                }
-                HiSplat_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  HiSplat: Hierarchical 3D Gaussian Splatting for Generalizable Sparse-View Reconstruction
-                </papertitle>
-              </a>
-                    <br>
-                    <a>Shengji Tang</a>, 
-                    <strong>Weicai Ye†</strong></a>,
-                    <a>Peng Ye</a>, 
-                    <a>Weihao Lin</a>, 
-                    <a>Yang Zhou</a>, 
-                    <a>Tao Chen</a>, 
-                    <a>Wanli Ouyang</a>
-                    <br>
-                    <em>ICLR</em> 2025
-                    <br>
-                    <a href="https://open3dvlab.github.io/HiSplat/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2410.06245">arXiv</a>
-                    /
-                    <a href="https://github.com/Open3DVLab/HiSplat">code</a>
-              <p></p>
-              <p>Proposed a hierarchical manner in generalizable 3D Gaussian Splatting to construct hierarchical 3D Gaussians via a coarse-to-fine strategy, 
-                which significantly enhances reconstruction quality and cross-dataset generalization.
-              </p>
-            </td>
-          </tr>
-
-          <tr onmouseout="DGTR_stop()" onmouseover="DGTR_start()" >
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='DGTR_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/DGTR/DGTR.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/DGTR/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function DGTR_start() {
-                  document.getElementById('DGTR_image').style.opacity = "1";
-                }
-
-                function DGTR_stop() {
-                  document.getElementById('DGTR_image').style.opacity = "0";
-                }
-                DGTR_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  DGTR: Distributed Gaussian Turbo-Reconstruction for Sparse-View Vast Scenes
-                </papertitle>
-              </a>
-                    <br>
-                    <a>Hao Li</a>, 
-                    <a>Yuanyuan Gao</a>, 
-                    <a>Haosong Peng</a>, 
-                    <a>Chenming Wu</a>, 
-                    <strong>Weicai Ye</strong>,
-                    <a>Yufeng Zhan</a>,
-                    <a>Chen Zhao</a>, 
-                    <a>Dingwen Zhang</a>, 
-                    <a>Jingdong Wang</a>, 
-                    <a>Junwei Han</a>
-                    <br>
-                    <em>Arxiv</em> 2024, Under Review
-                    <br>
-                    <a href="https://3d-aigc.github.io/DGTR/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2411.12309">arXiv</a>
-                    /
-                    <a href="https://3d-aigc.github.io/DGTR/">code</a>
-                    <!-- / -->
-                    <!-- <a href="images/DGTR/framework.jpg">framework</a> -->
-              <p></p>
-              <p>
-                Proposed a novel distributed framework for efficient
-                Gaussian reconstruction for sparse-view vast scenes, leveraging feed-forward
-                Gaussian model for fast inference and a global alignment algorithm to ensure geometric
-                consistency.
-              </p>
-            </td>
-          </tr>
-
-          <tr onmouseout="diffpano_stop()" onmouseover="diffpano_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='diffpano_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/diffpano/diffpano.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/diffpano/teaser.png' width=160>
-              </div>
-              <script type="text/javascript">
-                function diffpano_start() {
-                  document.getElementById('diffpano_image').style.opacity = "1";
-                }
-
-                function diffpano_stop() {
-                  document.getElementById('diffpano_image').style.opacity = "0";
-                }
-                diffpano_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  DiffPano: Scalable and Consistent Text to Panorama Generation with Spherical Epipolar-Aware Diffusion          
-                </papertitle>
-              </a>
-                    <br>
-                    <strong>Weicai Ye*‡</strong> </a>,
-                    <a href="">Chenhao Ji*</a>,
-                    <a>Zheng Chen</a>,
-                    <a href="">Junyao Gao</a>,
-                    <a href="">Xiaoshui Huang</a>,
-                    <a href="">Song-Hai Zhang</a>,
-                    <a>Wanli Ouyang</a>,
-                    <a>Tong He†</a>,
-                    <a>Cairong Zhao†</a>,
-                    <a href="">Guofeng Zhang†</a>
-                    <br>
-                    <em>NeurIPS</em>, 2024, CCF-A
-                    <br>
-                    <a href="https://zju3dv.github.io/DiffPano/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2410.24203">arXiv</a>
-                    /
-                    <a href="https://github.com/zju3dv/DiffPano">code</a>
-              <p></p>
-              <p>Proposed scalable and consistent text-to-panorama generation with spherical epipolar-aware diffusion. 
-                Established large-scale panoramic video-text datasets with corresponding depth and camera poses. 
-                Achieved long-term, consistent, and diverse panoramic scene generation given unseen text and camera poses with SOTA performance.
               </p>
             </td>
           </tr>
@@ -612,110 +512,155 @@
                 </td> 
           </tr>
 
-          
-
-          <tr onmouseout="datapsfm_stop()" onmouseover="datapsfm_start()">
+          <tr onmouseout="HiSplat_stop()" onmouseover="HiSplat_start()" >
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
-                <div class="two" id='datapsfm_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/DATAP-SfM/framework.jpg" type="video/mp4">
+                <div class="two" id='HiSplat_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/HiSplat/HiSplat.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video></div>
-                <img src='images/DATAP-SfM/teaser.jpg' width=160>
+                <img src='images/HiSplat/teaser.jpg' width=160>
               </div>
               <script type="text/javascript">
-                function datapsfm_start() {
-                  document.getElementById('datapsfm_image').style.opacity = "1";
+                function HiSplat_start() {
+                  document.getElementById('HiSplat_image').style.opacity = "1";
                 }
 
-                function datapsfm_stop() {
-                  document.getElementById('datapsfm_image').style.opacity = "0";
+                function HiSplat_stop() {
+                  document.getElementById('HiSplat_image').style.opacity = "0";
                 }
-                datapsfm_stop()
+                HiSplat_stop()
               </script>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>
-                  DATAP-SfM: Dynamic-Aware Tracking Any Point for Robust Dense Structure from Motion in the Wild              
+                  HiSplat: Hierarchical 3D Gaussian Splatting for Generalizable Sparse-View Reconstruction
                 </papertitle>
               </a>
                     <br>
-                    <strong>Weicai Ye‡</strong>,
-                    <a>Xinyu Chen</a>, 
-                    <a>Ruohao Zhan</a>, 
-                    <a>Di Huang</a>, 
-                    <a>Xiaoshui Huang</a>, 
-                    <a>Haoyi Zhu</a>, 
-                    <a>Hujun Bao</a>, 
-                    <a>Wanli Ouyang</a>, 
-                    <a>Tong He†</a>,
-                    <a href="">Guofeng Zhang†</a>
+                    <a>Shengji Tang</a>, 
+                    <strong>Weicai Ye†</strong></a>,
+                    <a>Peng Ye</a>, 
+                    <a>Weihao Lin</a>, 
+                    <a>Yang Zhou</a>, 
+                    <a>Tao Chen</a>, 
+                    <a>Wanli Ouyang</a>
                     <br>
-                    <em>Arxiv</em> 2024 coming, Under Review
+                    <em>ICLR</em> 2025
                     <br>
-                    <a href="">project page</a>
+                    <a href="https://open3dvlab.github.io/HiSplat/">project page</a>
                     /
-                    <a href="https://arxiv.org/abs/2411.13291">arXiv</a>
+                    <a href="https://arxiv.org/abs/2410.06245">arXiv</a>
                     /
-                    <a href="https://github.com/zju3dv/DATAP-SfM">code</a>
+                    <a href="https://github.com/Open3DVLab/HiSplat">code</a>
               <p></p>
-              <p>Proposed a concise, elegant, and robust SfM pipeline with point tracking for smooth camera trajectories and dense pointclouds from casual monocular videos.        
+              <p>Proposed a hierarchical manner in generalizable 3D Gaussian Splatting to construct hierarchical 3D Gaussians via a coarse-to-fine strategy, 
+                which significantly enhances reconstruction quality and cross-dataset generalization.
               </p>
             </td>
           </tr>
-          
-          <tr onmouseout="CoSurfGS_stop()" onmouseover="CoSurfGS_start()" bgcolor="#ffffd0">
+
+          <tr onmouseout="ndsdf_stop()" onmouseover="ndf_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
-                <div class="two" id='CoSurfGS_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/FedSurfGS/demo.mp4" type="video/mp4">
+                <div class="two" id='ndsdf_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/ND-SDF/demo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video></div>
-                <img src='images/FedSurfGS/framework.jpg' width=160>
+                <img src='images/ND-SDF/teaser.jpg' width=160>
               </div>
               <script type="text/javascript">
-                function CoSurfGS_start() {
-                  document.getElementById('CoSurfGS_image').style.opacity = "1";
+                function ndsdf_start() {
+                  document.getElementById('ndsdf_image').style.opacity = "1";
                 }
 
-                function CoSurfGS_stop() {
-                  document.getElementById('CoSurfGS_image').style.opacity = "0";
+                function ndsdf_stop() {
+                  document.getElementById('ndsdf_image').style.opacity = "0";
                 }
-                CoSurfGS_stop()
+                ndsdf_stop()
               </script>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>
-                  CoSurfGS: Collaborative 3D Surface Gaussian Splatting with Distributed Learning for Large Scene reconstruction               </papertitle>                </a>
+                  ND-SDF: Learning Normal Deflection Fields for High-Fidelity Indoor Reconstruction                
+                </papertitle>
+                </a>
                     <br>
-                    <a>Yuanyuan Gao</a>, 
-                    <a>Yalun Dai</a>, 
-                    <a>Hao Li</a>,
-                    <strong>Weicai Ye†</strong>, 
-                    <a>Junyi Chen</a>, 
-                    <a>Danpeng Chen</a>, 
-                    <a>Dingwen Zhang</a>, 
-                    <a>Tong He</a>, 
-                    <a>Guofeng Zhang</a> 
-                    <a>Junwei Han</a>
+                    <a>Ziyu Tang</a>,
+                    <strong>Weicai Ye†</strong>,
+                    <a>Yifan Wang</a>,
+                    <a>Di Huang</a>,
+                    <a>Hujun Bao</a>, 
+                    <a>Tong He†</a>, 
+                    <a>Guofeng Zhang</a>
                     <br>
-                    <em>Arxiv</em> 2024
+                    <em>ICLR</em> 2025
                     <br>
-                    <a href="https://gyy456.github.io/CoSurfGS/">project page</a>
+                    <a href="https://zju3dv.github.io/nd-sdf/">project page</a>
                     /
-                    <a href="https://arxiv.org/abs/2412.17612">arXiv</a>
+                    <a href="">arXiv</a>
                     /
-                    <a href="https://github.com/zju3dv/CoSurfGS">code</a>
-                    <!-- / -->
-                    <!-- <a href="images/PGSR/res3.jpg">Result1</a> -->
-                    <!-- / -->
-                    <!-- <a href="images/PGSR/res1.jpg">Result2</a> -->
+                    <a href="https://github.com/zju3dv/ND-SDF">code</a>
+                    /
+                    <a href="images/ND-SDF/demo.jpg">More results</a>
               <p></p>
-              <p> First cloud-edge-device hierarchical framework with Distributed Learning for large-scale high-fidelity surface reconstruction, 
-                achieving balance between high-precision reconstruction and low-cost memory. 
-                </td> 
+              <p>Proposed Normal Deflection fields to represent the angle deviation between the scene normals and the prior normals, achieving smooth surfaces with fine-grained structures, outperforming MonoSDF.
+                </p>
+                </td>
+                
+          </tr>
+
+          <tr onmouseout="gigags_stop()" onmouseover="gigags_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='gigags_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/GigaGS/demo.jpg" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/GigaGS/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function gigags_start() {
+                  document.getElementById('gigags_image').style.opacity = "1";
+                }
+
+                function gigags_stop() {
+                  document.getElementById('gigags_image').style.opacity = "0";
+                }
+                gigags_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  GigaGS: Scaling up Planar-Based 3D Gaussians for Large Scene Surface Reconstruction
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Junyi Chen*</a>, 
+                    <strong>Weicai Ye*†‡</strong>,
+                    <a>Yifan Wang</a>, 
+                    <a>Danpeng Chen</a>, 
+                    <a>Di Huang</a>, 
+                    <a>Wanli Ouyang</a>, 
+                    <a>Guofeng Zhang</a>, 
+                    <a>Yu Qiao</a>, 
+                    <a>Tong He†</a>
+                    <br>
+                    <em>AAAI</em> 2025, CCF-A
+                    <br>
+                    <a href="https://open3dvlab.github.io/GigaGS/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2409.06685">arXiv</a>
+                    /
+                    <a href="https://github.com/Open3DVLab/GigaGS">code</a>
+                    /
+                    <a href="images/GigaGS/demo.jpg">More results</a>
+              <p></p>
+              <p>Based on PGSR, proposed photorealistic rendering and efficient high-fidelity large surface reconstruction in a divide-and-conquer manner with LOD structure, outperforming Neuralangelo.              </p>
+            </td>
           </tr>
 
           <tr onmouseout="pgsr_stop()" onmouseover="pgsr_start()" bgcolor="#ffffd0">
@@ -771,153 +716,60 @@
                 </td> 
           </tr>
 
-          <tr onmouseout="DynaSurfGS_stop()" onmouseover="DynaSurfGS_start()">
+          
+          
+          <tr onmouseout="diffpano_stop()" onmouseover="diffpano_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
-                <div class="two" id='DynaSurfGS_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/DynaSurfGS/teaser.mp4" type="video/mp4">
+                <div class="two" id='diffpano_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/diffpano/diffpano.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video></div>
-                <img src='images/DynaSurfGS/teaser.jpg' width=160>
+                <img src='images/diffpano/teaser.png' width=160>
               </div>
               <script type="text/javascript">
-                function DynaSurfGS_start() {
-                  document.getElementById('DynaSurfGS_image').style.opacity = "1";
+                function diffpano_start() {
+                  document.getElementById('diffpano_image').style.opacity = "1";
                 }
 
-                function DynaSurfGS_stop() {
-                  document.getElementById('DynaSurfGS_image').style.opacity = "0";
+                function diffpano_stop() {
+                  document.getElementById('diffpano_image').style.opacity = "0";
                 }
-                DynaSurfGS_stop()
+                diffpano_stop()
               </script>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>
-                  DynaSurfGS: Dynamic Surface Reconstruction with Planar-based Gaussian Splatting
+                  DiffPano: Scalable and Consistent Text to Panorama Generation with Spherical Epipolar-Aware Diffusion          
                 </papertitle>
               </a>
                     <br>
-                    <a>Weiwei Cai</a>, 
-                    <strong>Weicai Ye†‡</strong>,
-                    <a>Peng Ye</a>, 
-                    <a>Tong He</a>, 
-                    <a>Tao Chen†</a>
+                    <strong>Weicai Ye*‡</strong> </a>,
+                    <a href="">Chenhao Ji*</a>,
+                    <a>Zheng Chen</a>,
+                    <a href="">Junyao Gao</a>,
+                    <a href="">Xiaoshui Huang</a>,
+                    <a href="">Song-Hai Zhang</a>,
+                    <a>Wanli Ouyang</a>,
+                    <a>Tong He†</a>,
+                    <a>Cairong Zhao†</a>,
+                    <a href="">Guofeng Zhang†</a>
                     <br>
-                    <em>Arxiv</em> 2024, Under Review
+                    <em>NeurIPS</em>, 2024, CCF-A
                     <br>
-                    <a href="https://open3dvlab.github.io/DynaSurfGS">project page</a>
+                    <a href="https://zju3dv.github.io/DiffPano/">project page</a>
                     /
-                    <a href="">arXiv</a>
+                    <a href="https://arxiv.org/abs/2410.24203">arXiv</a>
                     /
-                    <a href="https://github.com/Open3DVLab/DynaSurfGS">code</a>
+                    <a href="https://github.com/zju3dv/DiffPano">code</a>
               <p></p>
-              <p>
-                Based on PGSR, proposed the DynaSurfGS framework, which can facilitate real-time photorealistic rendering and dynamic high-fidelity surface reconstruction, 
-                achieving smooth surfaces with meticulous geometry.
+              <p>Proposed scalable and consistent text-to-panorama generation with spherical epipolar-aware diffusion. 
+                Established large-scale panoramic video-text datasets with corresponding depth and camera poses. 
+                Achieved long-term, consistent, and diverse panoramic scene generation given unseen text and camera poses with SOTA performance.
               </p>
             </td>
           </tr>
-
-          <tr onmouseout="gigags_stop()" onmouseover="gigags_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='gigags_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/GigaGS/demo.jpg" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/GigaGS/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function gigags_start() {
-                  document.getElementById('gigags_image').style.opacity = "1";
-                }
-
-                function gigags_stop() {
-                  document.getElementById('gigags_image').style.opacity = "0";
-                }
-                gigags_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  GigaGS: Scaling up Planar-Based 3D Gaussians for Large Scene Surface Reconstruction
-                </papertitle>
-              </a>
-                    <br>
-                    <a>Junyi Chen*</a>, 
-                    <strong>Weicai Ye*†‡</strong>,
-                    <a>Yifan Wang</a>, 
-                    <a>Danpeng Chen</a>, 
-                    <a>Di Huang</a>, 
-                    <a>Wanli Ouyang</a>, 
-                    <a>Guofeng Zhang</a>, 
-                    <a>Yu Qiao</a>, 
-                    <a>Tong He†</a>
-                    <br>
-                    <em>AAAI</em> 2025, CCF-A
-                    <br>
-                    <a href="https://open3dvlab.github.io/GigaGS/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2409.06685">arXiv</a>
-                    /
-                    <a href="https://github.com/Open3DVLab/GigaGS">code</a>
-                    /
-                    <a href="images/GigaGS/demo.jpg">More results</a>
-              <p></p>
-              <p>Based on PGSR, proposed photorealistic rendering and efficient high-fidelity large surface reconstruction in a divide-and-conquer manner with LOD structure, outperforming Neuralangelo.              </p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="streetsurfgs_stop()" onmouseover="streetsurfgs_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='streetsurfgs_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/StreetSurfGS/teaser.jpg" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/StreetSurfGS/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function streetsurfgs_start() {
-                  document.getElementById('streetsurfgs_image').style.opacity = "1";
-                }
-
-                function streetsurfgs_stop() {
-                  document.getElementById('streetsurfgs_image').style.opacity = "0";
-                }
-                streetsurfgs_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  StreetSurfGS: Scalable Large Scene Surface Reconstruction with Gaussian Splatting for Urban Street Scences                   
-                </papertitle>
-                </a>
-                    <br>
-                    <a>Xiao Cui*</a>
-                    <strong>Weicai Ye*†‡</strong>,
-                    <a>Yifan Wang</a>, 
-                    <a>Guofeng Zhang</a>, 
-                    <a>Wengang Zhou</a>, 
-                    <a>Tong He†</a>, 
-                    <a>Houqiang Li</a>
-                    <br>
-                    <em>Arxiv</em> 2024, Under Review
-                    <br>
-                    <a href="">project page</a>
-                    /
-                    <a href="">arXiv</a>
-                    /
-                    <a href="">code</a>
-              <p></p>
-              <p>Based on PGSR, proposed photorealistic rendering and efficient high-fidelity Large Scene Surface Reconstruction for Urban Street Scenes with Free Camera Trajectories, outperforming F2NeRF.
-                </p>
-              </td>
-          </tr>
-
           <tr onmouseout="neurodin_stop()" onmouseover="neurodin_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -971,57 +823,270 @@
                 </td>
           </tr>
 
-          <tr onmouseout="ndsdf_stop()" onmouseover="ndf_start()">
+          <tr onmouseout="pointmatter_stop()" onmouseover="pointmatter_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
-                <div class="two" id='ndsdf_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/ND-SDF/demo.mp4" type="video/mp4">
+                <div class="two" id='pointmatter_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/pointmatter/teaser.jpg" type="video/mp4">
                 Your browser does not support the video tag.
                 </video></div>
-                <img src='images/ND-SDF/teaser.jpg' width=160>
+                <img src='images/pointmatter/teaser.jpg' width=160>
               </div>
               <script type="text/javascript">
-                function ndsdf_start() {
-                  document.getElementById('ndsdf_image').style.opacity = "1";
+                function pointmatter_start() {
+                  document.getElementById('pointmatter_image').style.opacity = "1";
                 }
 
-                function ndsdf_stop() {
-                  document.getElementById('ndsdf_image').style.opacity = "0";
+                function pointmatter_stop() {
+                  document.getElementById('pointmatter_image').style.opacity = "0";
                 }
-                ndsdf_stop()
+                pointmatter_stop()
               </script>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>
-                  ND-SDF: Learning Normal Deflection Fields for High-Fidelity Indoor Reconstruction                
+                  Point Cloud Matters: Rethinking the Impact of Different Observation Spaces on Robot Learning
+                </papertitle>                </a>
+                    <br>
+                    <a>Haoyi Zhu</a>, 
+                    <a>Yating Wang</a>, 
+                    <a>Di Huang</a>, 
+                    <strong>Weicai Ye</strong>, 
+                    <a>Wanli Ouyang</a>, 
+                    <a>Tong He</a>
+                    
+                    
+                    <br>
+                    <em>NeurIPS 2024 Datasets and Benchmarks Track </em>, CCF-A 
+                    <br>
+                    <a href="https://haoyizhu.github.io/PointCloudMatters.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2402.02500">arXiv</a>
+                    /
+                    <a href="https://github.com/HaoyiZhu/PointCloudMatters">code</a>
+              <p></p>
+              <p>  Implied that point cloud observation, or explicit 3D information, matters for robot learning. With point cloud as input, the agent achieved higher mean success rates and exhibited better generalization ability.</p>
+
+                </td> 
+          </tr>
+
+
+          <tr onmouseout="DGTR_stop()" onmouseover="DGTR_start()" >
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='DGTR_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/DGTR/DGTR.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/DGTR/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function DGTR_start() {
+                  document.getElementById('DGTR_image').style.opacity = "1";
+                }
+
+                function DGTR_stop() {
+                  document.getElementById('DGTR_image').style.opacity = "0";
+                }
+                DGTR_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  DGTR: Distributed Gaussian Turbo-Reconstruction for Sparse-View Vast Scenes
                 </papertitle>
-                </a>
+              </a>
                     <br>
-                    <a>Ziyu Tang</a>,
-                    <strong>Weicai Ye†</strong>,
-                    <a>Yifan Wang</a>,
-                    <a>Di Huang</a>,
-                    <a>Hujun Bao</a>, 
-                    <a>Tong He†</a>, 
-                    <a>Guofeng Zhang</a>
+                    <a>Hao Li</a>, 
+                    <a>Yuanyuan Gao</a>, 
+                    <a>Haosong Peng</a>, 
+                    <a>Chenming Wu</a>, 
+                    <strong>Weicai Ye</strong>,
+                    <a>Yufeng Zhan</a>,
+                    <a>Chen Zhao</a>, 
+                    <a>Dingwen Zhang</a>, 
+                    <a>Jingdong Wang</a>, 
+                    <a>Junwei Han</a>
                     <br>
-                    <em>ICLR</em> 2025
+                    <em>Arxiv</em> 2024, Under Review
                     <br>
-                    <a href="https://zju3dv.github.io/nd-sdf/">project page</a>
+                    <a href="https://3d-aigc.github.io/DGTR/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2411.12309">arXiv</a>
+                    /
+                    <a href="https://3d-aigc.github.io/DGTR/">code</a>
+                    <!-- / -->
+                    <!-- <a href="images/DGTR/framework.jpg">framework</a> -->
+              <p></p>
+              <p>
+                Proposed a novel distributed framework for efficient
+                Gaussian reconstruction for sparse-view vast scenes, leveraging feed-forward
+                Gaussian model for fast inference and a global alignment algorithm to ensure geometric
+                consistency.
+              </p>
+            </td>
+          </tr>
+
+          
+          
+
+          
+          
+
+          
+
+          <tr onmouseout="DynaSurfGS_stop()" onmouseover="DynaSurfGS_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='DynaSurfGS_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/DynaSurfGS/teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/DynaSurfGS/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function DynaSurfGS_start() {
+                  document.getElementById('DynaSurfGS_image').style.opacity = "1";
+                }
+
+                function DynaSurfGS_stop() {
+                  document.getElementById('DynaSurfGS_image').style.opacity = "0";
+                }
+                DynaSurfGS_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  DynaSurfGS: Dynamic Surface Reconstruction with Planar-based Gaussian Splatting
+                </papertitle>
+              </a>
+                    <br>
+                    <a>Weiwei Cai</a>, 
+                    <strong>Weicai Ye†‡</strong>,
+                    <a>Peng Ye</a>, 
+                    <a>Tong He</a>, 
+                    <a>Tao Chen†</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="https://open3dvlab.github.io/DynaSurfGS">project page</a>
                     /
                     <a href="">arXiv</a>
                     /
-                    <a href="https://github.com/zju3dv/ND-SDF">code</a>
-                    /
-                    <a href="images/ND-SDF/demo.jpg">More results</a>
+                    <a href="https://github.com/Open3DVLab/DynaSurfGS">code</a>
               <p></p>
-              <p>Proposed Normal Deflection fields to represent the angle deviation between the scene normals and the prior normals, achieving smooth surfaces with fine-grained structures, outperforming MonoSDF.
-                </p>
-                </td>
-                
+              <p>
+                Based on PGSR, proposed the DynaSurfGS framework, which can facilitate real-time photorealistic rendering and dynamic high-fidelity surface reconstruction, 
+                achieving smooth surfaces with meticulous geometry.
+              </p>
+            </td>
           </tr>
 
+          
+          
+          <tr onmouseout="streetsurfgs_stop()" onmouseover="streetsurfgs_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='streetsurfgs_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/StreetSurfGS/teaser.jpg" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/StreetSurfGS/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function streetsurfgs_start() {
+                  document.getElementById('streetsurfgs_image').style.opacity = "1";
+                }
+
+                function streetsurfgs_stop() {
+                  document.getElementById('streetsurfgs_image').style.opacity = "0";
+                }
+                streetsurfgs_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  StreetSurfGS: Scalable Large Scene Surface Reconstruction with Gaussian Splatting for Urban Street Scences                   
+                </papertitle>
+                </a>
+                    <br>
+                    <a>Xiao Cui*</a>
+                    <strong>Weicai Ye*†‡</strong>,
+                    <a>Yifan Wang</a>, 
+                    <a>Guofeng Zhang</a>, 
+                    <a>Wengang Zhou</a>, 
+                    <a>Tong He†</a>, 
+                    <a>Houqiang Li</a>
+                    <br>
+                    <em>Arxiv</em> 2024, Under Review
+                    <br>
+                    <a href="">project page</a>
+                    /
+                    <a href="">arXiv</a>
+                    /
+                    <a href="">code</a>
+              <p></p>
+              <p>Based on PGSR, proposed photorealistic rendering and efficient high-fidelity Large Scene Surface Reconstruction for Urban Street Scenes with Free Camera Trajectories, outperforming F2NeRF.
+                </p>
+              </td>
+          </tr>
+
+          <tr onmouseout="datapsfm_stop()" onmouseover="datapsfm_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='datapsfm_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/DATAP-SfM/framework.jpg" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/DATAP-SfM/teaser.jpg' width=160>
+              </div>
+              <script type="text/javascript">
+                function datapsfm_start() {
+                  document.getElementById('datapsfm_image').style.opacity = "1";
+                }
+
+                function datapsfm_stop() {
+                  document.getElementById('datapsfm_image').style.opacity = "0";
+                }
+                datapsfm_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>
+                  DATAP-SfM: Dynamic-Aware Tracking Any Point for Robust Dense Structure from Motion in the Wild              
+                </papertitle>
+              </a>
+                    <br>
+                    <strong>Weicai Ye‡</strong>,
+                    <a>Xinyu Chen</a>, 
+                    <a>Ruohao Zhan</a>, 
+                    <a>Di Huang</a>, 
+                    <a>Xiaoshui Huang</a>, 
+                    <a>Haoyi Zhu</a>, 
+                    <a>Hujun Bao</a>, 
+                    <a>Wanli Ouyang</a>, 
+                    <a>Tong He†</a>,
+                    <a href="">Guofeng Zhang†</a>
+                    <br>
+                    <em>Arxiv</em> 2024 coming, Under Review
+                    <br>
+                    <a href="">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2411.13291">arXiv</a>
+                    /
+                    <a href="https://github.com/zju3dv/DATAP-SfM">code</a>
+              <p></p>
+              <p>Proposed a concise, elegant, and robust SfM pipeline with point tracking for smooth camera trajectories and dense pointclouds from casual monocular videos.        
+              </p>
+            </td>
+          </tr>
+          
+          
           <tr onmouseout="d3flowslam_stop()" onmouseover="d3flowslam_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -1166,53 +1231,7 @@
                 </td> 
           </tr>
 
-          <tr onmouseout="pointmatter_stop()" onmouseover="pointmatter_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='pointmatter_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/pointmatter/teaser.jpg" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/pointmatter/teaser.jpg' width=160>
-              </div>
-              <script type="text/javascript">
-                function pointmatter_start() {
-                  document.getElementById('pointmatter_image').style.opacity = "1";
-                }
-
-                function pointmatter_stop() {
-                  document.getElementById('pointmatter_image').style.opacity = "0";
-                }
-                pointmatter_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="">
-                <papertitle>
-                  Point Cloud Matters: Rethinking the Impact of Different Observation Spaces on Robot Learning
-                </papertitle>                </a>
-                    <br>
-                    <a>Haoyi Zhu</a>, 
-                    <a>Yating Wang</a>, 
-                    <a>Di Huang</a>, 
-                    <strong>Weicai Ye</strong>, 
-                    <a>Wanli Ouyang</a>, 
-                    <a>Tong He</a>
-                    
-                    
-                    <br>
-                    <em>NeurIPS 2024 Datasets and Benchmarks Track </em>, CCF-A 
-                    <br>
-                    <a href="https://haoyizhu.github.io/PointCloudMatters.github.io/">project page</a>
-                    /
-                    <a href="https://arxiv.org/abs/2402.02500">arXiv</a>
-                    /
-                    <a href="https://github.com/HaoyiZhu/PointCloudMatters">code</a>
-              <p></p>
-              <p>  Implied that point cloud observation, or explicit 3D information, matters for robot learning. With point cloud as input, the agent achieved higher mean success rates and exhibited better generalization ability.</p>
-
-                </td> 
-          </tr>
+          
 
           <tr onmouseout="nerfdetpp_stop()" onmouseover="nerfdetpp_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
