@@ -55,6 +55,9 @@
             <heading>News</heading>
             <ul>
               <li>
+                <div class="marker"><div>[2025-06] <a href="https://fulldit.github.io/">FullDiT</a> accepted to ICCV 2025.</div>
+            </li>
+              <li>
                 <div class="marker"><div>[2025-04] <a href="https://github.com/mrsempress/NeRF-Detplusplus">NeRF-Det++</a> accepted to TIP 2025.</div>
             </li>
               <li>
@@ -164,6 +167,53 @@
             </td>
           </tr> -->
           
+          <tr onmouseout="fulldit2_stop()" onmouseover="fulldit2_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='fulldit2_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/fulldit2/teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/fulldit2/teaser.png' width=160>
+              </div>
+              <script type="text/javascript">
+                function fulldit2_start() {
+                  document.getElementById('fulldit2_image').style.opacity = "1";
+                }
+
+                function fulldit2_stop() {
+                  document.getElementById('fulldit2_image').style.opacity = "0";
+                }
+                fulldit_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="">
+                <papertitle>FullDiT2: Efficient In-Context Conditioning for Video Diffusion Transformers           </papertitle>                </a>
+                    <br>
+                    <a>Xuanhua He</a>,
+                    <a>Quande Liu</a>,  
+                    <a>Zixuan Ye</a>, 
+                    <strong>Weicai Ye</strong>, 
+                    <a>Qiulin Wang</a>,
+                    <a>Xintao Wang</a>,
+                    <a>Qifeng Chen</a> 
+                    <a>Pengfei Wan</a>, 
+                    <a>Di Zhang</a>, 
+                    <a>Kun Gai</a>
+                    <br>
+                    <em>Arxiv</em> 2025
+                    <br>
+                    <a href="https://fulldit2.github.io/">project page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2506.04213">arXiv</a>
+                    /
+                    <a href="">code</a>
+              <p></p>
+              <p> Efficient in-context conditioning framework with dynamical token selection and selective context caching mechanism to address the token redundancy and redundant interactions. <strong>Significant Speedup, Reduced Computational Cost, Preserved/Improved Quality.</strong>
+                </td> 
+          </tr>
+
           <tr onmouseout="fulldit_stop()" onmouseover="fulldit_start()" bgcolor="#ffffd0">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
@@ -198,7 +248,7 @@
                     <a>Kun Gai</a>, 
                     <a>Qiang Xu</a> 
                     <br>
-                    <em>Arxiv</em> 2025
+                    <em>ICCV</em> 2025
                     <br>
                     <a href="https://fulldit.github.io/">project page</a>
                     /
@@ -206,8 +256,8 @@
                     /
                     <a href="">code</a>
               <p></p>
-              <p> A unified video generative foundation model that seamlessly integrates multiple conditions, significantly reduces parameter overhead,
-                avoids conflicts common in adapter-based methods, and shows scalability and emergent ability in combining diverse, previously unseen modalities.
+              <p> A <strong>unified video generative foundation model that seamlessly integrates multiple conditions</strong>, significantly reduces parameter overhead,
+                avoids conflicts common in adapter-based methods, and shows <strong>scalability and emergent ability</strong> in combining diverse, previously unseen modalities.
                 </td> 
           </tr>
 
